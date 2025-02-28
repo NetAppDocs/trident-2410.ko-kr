@@ -1,0 +1,241 @@
+---
+sidebar: sidebar 
+permalink: trident-protect/trident-protect-installation.html 
+keywords: install, trident, protect, requirements, registry 
+summary: 사용자 환경이 요구 사항을 충족하는 경우 다음 단계에 따라 Trident Protect를 설치할 수 있습니다. 
+---
+= Trident Protect를 설치하고 구성합니다
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+사용 중인 환경이 Trident Protect 요구 사항을 충족하는 경우 다음 단계에 따라 클러스터에 Trident Protect를 설치할 수 있습니다. NetApp에서 Trident Protect를 얻거나 개인 레지스트리에서 설치할 수 있습니다. 클러스터가 인터넷에 액세스할 수 없는 경우 개인 레지스트리에서 설치하는 것이 유용합니다.
+
+
+NOTE: 기본적으로 Trident Protect는 클러스터 및 관리형 애플리케이션에 대한 로그, 메트릭, 토폴로지 정보 등 파트너가 개설할 수 있는 모든 NetApp 지원 사례에 도움이 되는 지원 정보를 수집합니다. Trident Protect는 이러한 지원 번들을 일일 일정에 따라 NetApp로 전송합니다. Trident Protect를 설치할 때 선택적으로 이 지원 번들 컬렉션을 비활성화할 수 있습니다. 언제든지 수동으로 수행할 수 link:trident-protect-generate-support-bundle.html["지원 번들을 생성합니다"]있습니다.
+
+
+
+== Trident Protect를 설치합니다
+
+[role="tabbed-block"]
+====
+.NetApp에서 Trident Protect를 설치합니다
+--
+.단계
+. Trident Helm 저장소 추가:
++
+[source, console]
+----
+helm repo add netapp-trident-protect https://netapp.github.io/trident-protect-helm-chart
+----
+. Trident Protect CRD를 설치합니다.
++
+[source, console]
+----
+helm install trident-protect-crds netapp-trident-protect/trident-protect-crds --version 100.2410.1 --create-namespace --namespace trident-protect
+----
+. Helm을 사용하여 다음 명령 중 하나를 사용하여 Trident Protect를 설치합니다. 클러스터에 할당되고 클러스터의 백업 및 스냅샷을 식별하는 데 사용되는 클러스터 이름으로 바꿉니다 `<name_of_cluster>`.
++
+** Trident Protect를 정상적으로 설치합니다.
++
+[source, console]
+----
+helm install trident-protect netapp-trident-protect/trident-protect --set clusterName=<name_of_cluster> --version 100.2410.1 --create-namespace --namespace trident-protect
+----
+** Trident Protect를 설치하고 예약된 일일 Trident Protect AutoSupport 지원 번들 업로드를 비활성화합니다.
++
+[source, console]
+----
+helm install trident-protect netapp-trident-protect/trident-protect --set autoSupport.enabled=false --set clusterName=<name_of_cluster> --version 100.2410.1 --create-namespace --namespace trident-protect
+----
+
+
+
+
+--
+.개인 레지스트리로부터 Trident Protect를 설치합니다
+--
+Kubernetes 클러스터가 인터넷에 액세스할 수 없는 경우 개인 이미지 레지스트리에서 Trident Protect를 설치할 수 있습니다. 이 예제에서는 대괄호 안의 값을 사용자 환경의 정보로 바꿉니다.
+
+.단계
+. 다음 이미지를 로컬 컴퓨터로 가져와서 태그를 업데이트한 다음 개인 레지스트리에 푸시합니다.
++
+[source, console]
+----
+netapp/controller:24.10.1
+netapp/restic:24.10.1
+netapp/kopia:24.10.1
+netapp/trident-autosupport:24.10.0
+netapp/exechook:24.10.1
+netapp/resourcebackup:24.10.1
+netapp/resourcerestore:24.10.1
+netapp/resourcedelete:24.10.1
+bitnami/kubectl:1.30.2
+kubebuilder/kube-rbac-proxy:v0.16.0
+----
++
+예를 들면 다음과 같습니다.
+
++
+[source, console]
+----
+docker pull netapp/controller:24.10.1
+----
++
+[source, console]
+----
+docker tag netapp/controller:24.10.1 <private-registry-url>/controller:24.10.1
+----
++
+[source, console]
+----
+docker push <private-registry-url>/controller:24.10.1
+----
+. Trident Protect 시스템 네임스페이스를 생성합니다.
++
+[source, console]
+----
+kubectl create ns trident-protect
+----
+. 레지스트리에 로그인합니다.
++
+[source, console]
+----
+helm registry login <private-registry-url> -u <account-id> -p <api-token>
+----
+. 개인 레지스트리 인증에 사용할 풀 암호를 만듭니다.
++
+[source, console]
+----
+kubectl create secret docker-registry regcred --docker-username=<registry-username> --docker-password=<api-token> -n trident-protect --docker-server=<private-registry-url>
+----
+. Trident Helm 저장소 추가:
++
+[source, console]
+----
+helm repo add netapp-trident-protect https://netapp.github.io/trident-protect-helm-chart
+----
+. 라는 이름의 파일을 `protectValues.yaml` 만듭니다. Trident Protect에 다음 설정이 포함되어 있는지 확인합니다.
++
+[source, yaml]
+----
+---
+image:
+  registry: <private-registry-url>
+imagePullSecrets:
+  - name: regcred
+controller:
+  image:
+    registry: <private-registry-url>
+rbacProxy:
+  image:
+    registry: <private-registry-url>
+crCleanup:
+  imagePullSecrets:
+    - name: regcred
+webhooksCleanup:
+  imagePullSecrets:
+    - name: regcred
+----
+. Trident Protect CRD를 설치합니다.
++
+[source, console]
+----
+helm install trident-protect-crds netapp-trident-protect/trident-protect-crds --version 100.2410.1 --create-namespace --namespace trident-protect
+----
+. Helm을 사용하여 다음 명령 중 하나를 사용하여 Trident Protect를 설치합니다. 클러스터에 할당되고 클러스터의 백업 및 스냅샷을 식별하는 데 사용되는 클러스터 이름으로 바꿉니다 `<name_of_cluster>`.
++
+** Trident Protect를 정상적으로 설치합니다.
++
+[source, console]
+----
+helm install trident-protect netapp-trident-protect/trident-protect --set clusterName=<name_of_cluster> --version 100.2410.1 --create-namespace --namespace trident-protect -f protectValues.yaml
+----
+** Trident Protect를 설치하고 예약된 일일 Trident Protect AutoSupport 지원 번들 업로드를 비활성화합니다.
++
+[source, console]
+----
+helm install trident-protect netapp-trident-protect/trident-protect --set autoSupport.enabled=false --set clusterName=<name_of_cluster> --version 100.2410.1 --create-namespace --namespace trident-protect -f protectValues.yaml
+----
+
+
+
+
+--
+====
+
+
+== Trident Protect 컨테이너 리소스 제한을 지정합니다
+
+Trident Protect를 설치한 후 구성 파일을 사용하여 Trident Protect 컨테이너에 대한 리소스 제한을 지정할 수 있습니다. 리소스 제한을 설정하면 Trident Protect 작업에서 사용되는 클러스터 리소스의 양을 제어할 수 있습니다.
+
+.단계
+. 라는 이름의 파일을 `resourceLimits.yaml` 만듭니다.
+. 환경 요구 사항에 따라 Trident Protect 컨테이너에 대한 리소스 제한 옵션을 파일에 채웁니다.
++
+다음 예제 구성 파일은 사용 가능한 설정을 보여 주며 각 리소스 제한에 대한 기본 vaules를 포함합니다.
+
++
+[source, yaml]
+----
+---
+jobResources:
+  defaults:
+    limits:
+      cpu: 8000m
+      memory: 10000Mi
+      ephemeralStorage: ""
+    requests:
+      cpu: 100m
+      memory: 100Mi
+      ephemeralStorage: ""
+  resticVolumeBackup:
+    limits:
+      cpu: ""
+      memory: ""
+      ephemeralStorage: ""
+    requests:
+      cpu: ""
+      memory: ""
+      ephemeralStorage: ""
+  resticVolumeRestore:
+    limits:
+      cpu: ""
+      memory: ""
+      ephemeralStorage: ""
+    requests:
+      cpu: ""
+      memory: ""
+      ephemeralStorage: ""
+  kopiaVolumeBackup:
+    limits:
+      cpu: ""
+      memory: ""
+      ephemeralStorage: ""
+    requests:
+      cpu: ""
+      memory: ""
+      ephemeralStorage: ""
+  kopiaVolumeRestore:
+    limits:
+      cpu: ""
+      memory: ""
+      ephemeralStorage: ""
+    requests:
+      cpu: ""
+      memory: ""
+      ephemeralStorage: ""
+----
+. 파일의 값을 적용합니다 `resourceLimits.yaml`.
++
+[source, console]
+----
+helm upgrade trident-protect -n trident-protect -f <resourceLimits.yaml> --reuse-values
+----
+
