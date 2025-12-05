@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: trident-protect/trident-protect-appvault-custom-resources.html 
 keywords: trident. appvault, custom, protect, kubernetes 
-summary: 'Trident Protect의 버킷 사용자 지정 리소스(CR)를 AppVault라고 합니다. AppVaults는 스토리지 버킷의 선언적 Kubernetes 워크플로 표현입니다.' 
+summary: 'Trident Protect의 버킷 사용자 정의 리소스(CR)는 AppVault로 알려져 있습니다. AppVaults는 스토리지 버킷의 선언적 Kubernetes 워크플로 표현입니다.' 
 ---
-= Trident Protect AppVault 객체를 사용하여 버킷을 관리합니다
+= Trident Protect AppVault 객체를 사용하여 버킷을 관리합니다.
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: 'Trident Protect의 버킷 사용자 지정 리소스(CR)를 AppVault�
 
 
 [role="lead"]
-Trident Protect의 버킷 사용자 지정 리소스(CR)를 AppVault라고 합니다. AppVault 개체는 스토리지 버킷의 선언적 Kubernetes 워크플로우 표현입니다. AppVault CR에는 백업, 스냅샷, 복원 작업 및 SnapMirror 복제와 같은 보호 작업에 사용되는 버킷에 필요한 구성이 포함되어 있습니다. 관리자만 AppVaults를 만들 수 있습니다.
+Trident Protect의 버킷 사용자 정의 리소스(CR)는 AppVault로 알려져 있습니다. AppVault 객체는 스토리지 버킷의 선언적 Kubernetes 워크플로 표현입니다. AppVault CR에는 백업, 스냅샷, 복원 작업, SnapMirror 복제와 같은 보호 작업에 버킷을 사용하는 데 필요한 구성이 포함되어 있습니다. 관리자만 AppVault를 만들 수 있습니다.
 
 
 
@@ -285,7 +285,7 @@ tridentctl-protect create vault StorageGridS3 s3vault --bucket <bucket-name> --s
 
 == AppVault 브라우저를 사용하여 AppVault 정보를 봅니다
 
-Trident Protect CLI 플러그인을 사용하여 클러스터에 생성된 AppVault 개체에 대한 정보를 볼 수 있습니다.
+Trident Protect CLI 플러그인을 사용하면 클러스터에서 생성된 AppVault 개체에 대한 정보를 볼 수 있습니다.
 
 .단계
 . AppVault 개체의 내용을 봅니다.
@@ -316,7 +316,7 @@ tridentctl-protect get appvaultcontent gcp-vault --show-resources all
 ----
 . 선택적으로, 각 리소스의 AppVaultPath를 보려면 플래그를 `--show-paths`사용합니다.
 +
-테이블의 첫 번째 열에 있는 클러스터 이름은 Trident Protect Helm 설치에 클러스터 이름이 지정된 경우에만 사용할 수 있습니다. 예를 들면 다음과 `--set clusterName=production1`같습니다.
+표의 첫 번째 열에 있는 클러스터 이름은 Trident Protect helm 설치 시 클러스터 이름이 지정된 경우에만 사용할 수 있습니다. 예를 들어: `--set clusterName=production1` .
 
 
 
@@ -345,7 +345,7 @@ kubectl delete appvault <appvault_name> -n trident-protect
 
 
 --
-.Trident Protect CLI를 사용하여 AppVault를 제거합니다
+.Trident Protect CLI를 사용하여 AppVault 제거
 --
 . AppVault 개체를 제거하고 `appvault_name` 제거할 AppVault 개체의 이름으로 바꿉니다.
 +

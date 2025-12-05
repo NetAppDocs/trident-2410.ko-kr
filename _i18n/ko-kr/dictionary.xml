@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <blocks>
   <block id="d41d8cd98f00b204e9800998ecf8427e" category="doc"></block>
-  <block id="26ff92fc2410a19d125f3783f36a21f5" category="paragraph">KubeVirt VM에서 실행 중인 애플리케이션을 보호할 때 Trident Protect 24.10 및 24.10.1 이상의 동작이 다릅니다. 두 버전의 경우 모두 데이터 보호 작업 중에 파일 시스템 고정 및 고정 해제를 설정하거나 해제할 수 있습니다.</block>
-  <block id="39f898ec3965dde14aeec545419037ac" category="paragraph">모든 Trident Protect 버전에 대해 OpenShift 환경에서 자동 고정 기능을 활성화 또는 비활성화하려면 애플리케이션 네임스페이스에 권한 있는 권한을 부여해야 할 수 있습니다. 예를 들면 다음과 같습니다.</block>
-  <block id="4d2e55f1e0d6587dd3b63700ee1065af" category="paragraph-title">Trident Protect 24.10</block>
-  <block id="2d261bce9a1e151a31ff22788033f212" category="paragraph">Trident Protect 24.10은 데이터 보호 작업 중에 KubeVirt VM 파일 시스템의 일관된 상태를 자동으로 보장하지 않습니다. Trident Protect 24.10을 사용하여 KubeVirt VM 데이터를 보호하려면 데이터 보호 작업 전에 파일 시스템에 대해 고정/고정 해제 기능을 수동으로 활성화해야 합니다. 이렇게 하면 파일 시스템이 정합성 보장 상태가 됩니다.</block>
   <block id="acb14ba5b70eb330a1d4de9c6b7a325d" category="inline-link-macro">가상화 구성</block>
-  <block id="74c1cc067621b7ea2ccf9f91b4595bd8" category="paragraph">를 사용하여 데이터 보호 작업 중에 VM 파일 시스템의 고정 및 고정 해제를 관리하도록 Trident Protect 24.10을 구성한 후 다음 명령을 사용하여 관리할 수 <block ref="e0dd4c4b8aa16596df6c3f5cb36d3cdc" category="inline-link-macro-rx"></block>있습니다.</block>
-  <block id="72768e0f0d0f990d0abd53363fda4696" category="paragraph-title">Trident Protect 24.10.1 이상</block>
-  <block id="42a2550b14037192e0c3252e7666ec4d" category="paragraph">Trident Protect 24.10.1부터 Trident Protect는 데이터 보호 작업 중에 KubeVirt 파일 시스템이 자동으로 작동 중지되고 작동 중지되지 않습니다. 다음 명령을 사용하여 이 자동 동작을 비활성화할 수도 있습니다.</block>
   <block id="cedf2576eebff15fc6b30d5a7109eb6b" category="doc">복원 및 페일오버 작업 중 네임스페이스 주석 및 레이블</block>
   <block id="131ff34387be167411ffda7d60b577e7" category="paragraph">복원 및 페일오버 작업 중에 대상 네임스페이스의 레이블과 주석이 소스 네임스페이스의 레이블 및 주석과 일치하도록 만듭니다. 대상 네임스페이스에 없는 소스 네임스페이스의 레이블 또는 주석이 추가되고 이미 존재하는 모든 레이블 또는 주석이 소스 네임스페이스의 값과 일치하도록 덮어쓰여집니다. 대상 네임스페이스에만 있는 레이블이나 주석은 변경되지 않습니다.</block>
   <block id="20f40e0b9308901dac07ce8a8efb3350" category="inline-link">OpenShift 보안 컨텍스트 제약 조건 문서</block>
   <block id="0723b21821c458b89843cb5f68a4cfdc" category="admonition">RedHat OpenShift를 사용하는 경우 OpenShift 환경에서 네임스페이스 주석의 중요한 역할을 주목해야 합니다. 네임스페이스 주석을 사용하면 복원된 Pod가 OpenShift SCC(Security Context Constraint)에서 정의한 적절한 권한 및 보안 구성을 준수하고 권한 문제 없이 볼륨에 액세스할 수 있습니다. 자세한 내용은 를<block ref="8806a202f84108289eeb3181c071d58e" category="inline-link-rx"></block>참조하십시오.</block>
   <block id="6c83555d4261acb08ebbc5f24823dc7b" category="paragraph">복원 또는 페일오버 작업을 수행하기 전에 Kubernetes 환경 변수를 설정하여 타겟 네임스페이스의 특정 주석을 덮어쓰지 않도록 할 수 있습니다<block ref="1580ff61f204e9d56cd5324c7e9221ba" prefix=" " category="inline-code"></block>. 예를 들면 다음과 같습니다.</block>
-  <block id="11a75e55f9a91a12e7d31886a76ff312" category="paragraph">플래그가 있는 Helm을 사용하여 소스 애플리케이션을 설치한 경우<block ref="cc1f5c1d16e33b8463c9ee27295cd5df" prefix=" " category="inline-code"></block> 레이블 키에 특수 치료가<block ref="b068931cc450442b63f5b3d276ea4297" prefix=" " category="inline-code"></block> 제공됩니다. 복구 또는 페일오버 프로세스 중에 Trident Protect는 이 레이블을 대상 네임스페이스에 복제하지만 소스의 값이 소스 네임스페이스와 일치하면 대상 네임스페이스 값으로 업데이트합니다. 이 값이 소스 네임스페이스와 일치하지 않으면 변경 없이 대상 네임스페이스로 복사됩니다.</block>
   <block id="0a52730597fb4ffa01fc117d9e71e3a9" category="section-title">예</block>
   <block id="1280c48f074ec68fd2281266662c9a3f" category="paragraph">다음 예제에서는 각각 다른 주석과 레이블이 있는 소스 및 대상 네임스페이스를 보여 줍니다. 작업 전후에 대상 네임스페이스의 상태와 대상 네임스페이스에서 주석과 레이블이 결합되거나 덮어써지는 방법을 확인할 수 있습니다.</block>
   <block id="2cfe257f724ed59a07ab01918c828fb5" category="section-title">복구 또는 페일오버 작업 전</block>
@@ -1550,21 +1542,9 @@
   <block id="3777d5420fb2ef4c5e434cd5af97d73d" category="inline-link-macro">tridentctl을 사용하여 Trident를 설치합니다</block>
   <block id="23d4814be45e57b94df46ce2ee2a19f6" category="list-text">Trident를 다시 설치합니다. 을 <block ref="6fa1b6e43e706a69762bd9a319950a21" category="inline-link-macro-rx"></block>참조하십시오.</block>
   <block id="1d2d1200e759d67b259f843be2270f71" category="admonition">업그레이드 프로세스를 중단하지 마십시오. 설치 프로그램이 완료될 때까지 실행되는지 확인합니다.</block>
-  <block id="579198c91fea423d4b79c97828ac3da4" category="summary">Trident Protect를 사용하면 Trident를 사용하여 애플리케이션 및 애플리케이션 데이터를 보호할 수 있습니다.</block>
-  <block id="a53f4cc048a3d0227206b8b6182e67dc" category="doc">Trident Protect에 대해 자세히 알아보십시오</block>
-  <block id="6d8d3279a9b2226029d9af309058363b" category="paragraph">NetApp Trident Protect는 NetApp ONTAP 스토리지 시스템과 NetApp Trident CSI 스토리지 프로비저닝 프로그램을 통해 상태 저장 Kubernetes 애플리케이션의 기능과 가용성을 개선하는 고급 애플리케이션 데이터 관리 기능을 제공합니다. Trident Protect는 퍼블릭 클라우드 및 온프레미스 환경에서 컨테이너화된 워크로드의 관리, 보호, 이동을 간소화합니다. 또한 API 및 CLI를 통해 자동화 기능을 제공합니다.</block>
-  <block id="6a945469c2d9fdc27b0cb844d066c984" category="paragraph">사용자 지정 리소스(CRS)를 생성하거나 Trident Protect CLI를 사용하여 Trident Protect를 사용하여 응용 프로그램을 보호할 수 있습니다.</block>
-  <block id="7e6f9558ca98ca29afd74d0bbb0b2bce" category="paragraph">Trident Protect 요구 사항에 대한 자세한 내용은 다음을 참조하십시오.</block>
-  <block id="a0a1eb9fbd2b7284352e6b610999f841" category="inline-link-macro">Trident 보호 요구 사항</block>
-  <block id="8d806bd87636d4fd0eecab0333057f10" category="list-text"><block ref="8d806bd87636d4fd0eecab0333057f10" category="inline-link-macro-rx"></block></block>
-  <block id="af68364761ed4114c192b6bb2962467b" category="summary">Trident Protect는 역할 기반 액세스 제어(RBAC)의 Kubernetes 모델을 사용합니다. Trident Protect RBAC 기능을 사용하여 리소스에 대한 액세스를 더 세부적으로 제어할 수 있습니다.</block>
-  <block id="0cc310db20eaee9161e8ef937010b536" category="doc">Trident 보호 인증 및 액세스 제어를 관리합니다</block>
-  <block id="9991f5d4b3aa4ae5a36fb2ad6a637d73" category="paragraph">Trident Protect는 역할 기반 액세스 제어(RBAC)의 Kubernetes 모델을 사용합니다. 기본적으로 Trident Protect는 단일 시스템 네임스페이스 및 연결된 기본 서비스 계정을 제공합니다. 조직에 많은 사용자 또는 특정 보안 요구 사항이 있는 경우 Trident Protect의 RBAC 기능을 사용하여 리소스 및 네임스페이스에 대한 액세스를 보다 세부적으로 제어할 수 있습니다.</block>
   <block id="a22c0a4dfca95968d88392eb0bbb2dcf" category="paragraph">클러스터 관리자는 항상 기본 네임스페이스의 리소스에 액세스할 수<block ref="9a82c7a4099124e5bfaa83e7c5997bd4" prefix=" " category="inline-code"></block> 있으며 다른 모든 네임스페이스의 리소스에 액세스할 수도 있습니다. 리소스 및 응용 프로그램에 대한 액세스를 제어하려면 추가 네임스페이스를 만들고 해당 네임스페이스에 리소스 및 응용 프로그램을 추가해야 합니다.</block>
   <block id="661e3b2b32de1ab85fb426b5abec28f3" category="paragraph">사용자는 기본 네임스페이스에 응용 프로그램 데이터 관리 CRS를 만들 수<block ref="9a82c7a4099124e5bfaa83e7c5997bd4" prefix=" " category="inline-code"></block> 없습니다. 응용 프로그램 네임스페이스에 응용 프로그램 데이터 관리 CRS를 만들어야 합니다(모범 사례로서 연결된 응용 프로그램과 동일한 네임스페이스에 응용 프로그램 데이터 관리 CRS를 만듭니다).</block>
-  <block id="b1f69b20762545a6c94e024888638df8" category="paragraph">관리자만 권한이 있는 Trident Protect 사용자 지정 리소스 객체에 액세스할 수 있어야 합니다. 여기에는 다음이 포함됩니다.</block>
   <block id="4516bb1529fba64216073cc95812839c" category="list-text">* AppVault *: 버킷 자격 증명 데이터가 필요합니다</block>
-  <block id="984eb0d94901a4b5f9105f96d4d2b4a9" category="list-text">* AutoSupport 번들 *: 메트릭, 로그 및 기타 민감한 Trident 보호 데이터를 수집합니다</block>
   <block id="10e6811ca4c78900349b612176a3233b" category="list-text">* AutoSupport기술에 따라 로그 수집 일정을 관리할 수 있습니다</block>
   <block id="7cfd5c25f0cd486a1157966cad4acba7" category="paragraph">가장 좋은 방법은 RBAC를 사용하여 권한이 있는 객체에 대한 액세스를 관리자에게 제한하는 것입니다.</block>
   <block id="407b2fe2d3bbcc55c8ae895a2fd8263c" category="inline-link">Kubernetes RBAC 설명서</block>
@@ -1586,7 +1566,6 @@
   <block id="78a7dfb4e5b60d84d3c54ec150be8a80" category="list-text">엔지니어링 서비스 계정에 대한 암호를 생성합니다.</block>
   <block id="b098f513abca683a5e1c36cbc8b244db" category="list-text">마케팅 서비스 계정에 대한 암호 만들기:</block>
   <block id="d1732b3423240a19064951afa9a3266a" category="section-title">4단계: RoleBinding 개체를 만들어 ClusterRole 개체를 각 새 서비스 계정에 바인딩합니다</block>
-  <block id="720de81bb5619bda23df5ae99eb9ebcb" category="paragraph">기본 ClusterRole 개체는 Trident Protect를 설치할 때 만들어집니다. RoleBinding 개체를 만들고 적용하여 이 ClusterRole 을 서비스 계정에 바인딩할 수 있습니다.</block>
   <block id="067d8d99affb5418a3d899eba8658cc4" category="list-text">ClusterRole을 엔지니어링 서비스 계정에 바인딩합니다.</block>
   <block id="b25ecd55b23c424058fdad947fe23b13" category="list-text">ClusterRole을 마케팅 서비스 계정에 연결:</block>
   <block id="574c7934280b498080dfc2272c570f69" category="section-title">5단계: 권한을 테스트합니다</block>
@@ -1604,9 +1583,6 @@
   <block id="07337191562a62a775a853d9901903a6" category="list-text">사용자가 이제 액세스 권한이 있는 AppVault 정보를 얻을 수 있는지 테스트해 봅니다.</block>
   <block id="8eea62084ca7e541d918e823422bd82e" category="paragraph-title">결과</block>
   <block id="e7165fc51f62031fcae1d793899febaa" category="paragraph">AppVault 권한을 부여한 사용자는 응용 프로그램 데이터 관리 작업에 승인된 AppVault 개체를 사용할 수 있어야 하며, 할당된 네임스페이스 외부의 리소스에 액세스하거나 액세스 권한이 없는 새 리소스를 생성할 수 없습니다.</block>
-  <block id="1317a4b523ecc5ea298adec08e7ba407" category="summary">Trident Protect의 버킷 사용자 지정 리소스(CR)를 AppVault라고 합니다. AppVaults는 스토리지 버킷의 선언적 Kubernetes 워크플로 표현입니다.</block>
-  <block id="97f3fa7a4bb86197f0db69aa160c73e9" category="doc">Trident Protect AppVault 객체를 사용하여 버킷을 관리합니다</block>
-  <block id="f39726752bf5b117fe78f8c383e31cdd" category="paragraph">Trident Protect의 버킷 사용자 지정 리소스(CR)를 AppVault라고 합니다. AppVault 개체는 스토리지 버킷의 선언적 Kubernetes 워크플로우 표현입니다. AppVault CR에는 백업, 스냅샷, 복원 작업 및 SnapMirror 복제와 같은 보호 작업에 사용되는 버킷에 필요한 구성이 포함되어 있습니다. 관리자만 AppVaults를 만들 수 있습니다.</block>
   <block id="b0f47f6adf0e419b1f2eec1a0a995e8c" category="section-title">키 생성 및 AppVault 정의 예</block>
   <block id="e1acb82bf1e9f5db4a12c5a7eb653d47" category="paragraph">AppVault CR을 정의할 때 공급자가 호스팅하는 리소스에 액세스하려면 자격 증명을 포함해야 합니다. 자격 증명에 대한 키를 생성하는 방법은 공급자에 따라 다릅니다. 다음은 여러 공급자에 대한 명령줄 키 생성 예제와 각 공급자에 대한 AppVault 정의 예입니다.</block>
   <block id="993632e3de5c928730b804a11727536f" category="section-title">키 생성 예</block>
@@ -1619,27 +1595,19 @@
   <block id="79832d443dadeb6d3b0637941d6ac067" category="open-title">StorageGRID S3</block>
   <block id="6b4d16571162a69eb03c99cb132a69ec" category="section-title">AppVault CR 예</block>
   <block id="d05c8b60cfd355fccac41017c33ca892" category="paragraph">다음 CR 예제를 사용하여 각 클라우드 공급자에 대한 AppVault 개체를 만들 수 있습니다.</block>
-  <block id="59264d37bdf7f6cbf4f94ad00dacdce1" category="section-title">Trident Protect CLI를 사용한 AppVault 생성 예</block>
   <block id="4db09810b323e73b4041a65c99bb14f8" category="paragraph">다음 CLI 명령 예제를 사용하여 각 공급자에 대해 AppVault CRS를 만들 수 있습니다.</block>
   <block id="4ac6e7a03fe8abedfa131f8cf6680984" category="section-title">AppVault 브라우저를 사용하여 AppVault 정보를 봅니다</block>
-  <block id="ce8f41081c98b9eea8be01b08936dbb0" category="paragraph">Trident Protect CLI 플러그인을 사용하여 클러스터에 생성된 AppVault 개체에 대한 정보를 볼 수 있습니다.</block>
   <block id="485573baf8bfa9487485deb07780d89f" category="list-text">AppVault 개체의 내용을 봅니다.</block>
   <block id="10dce9030ad8783afd2b4e831da49b7f" category="paragraph">* 출력 예 *:</block>
   <block id="72444a17ff17655124f96b02602fe90f" category="list-text">선택적으로, 각 리소스의 AppVaultPath를 보려면 플래그를<block ref="a9b1c03a99224cbb5c6773ccbe51d4fb" prefix=" " category="inline-code"></block>사용합니다.</block>
-  <block id="caef5be37857b92378c0054db6bc8696" category="paragraph">테이블의 첫 번째 열에 있는 클러스터 이름은 Trident Protect Helm 설치에 클러스터 이름이 지정된 경우에만 사용할 수 있습니다. 예를 들면 다음과<block ref="b84d46473a6782105f40ea4fa2bc2964" prefix=" " category="inline-code"></block>같습니다.</block>
   <block id="eb5dcb495342ee5285be31fb17267ccc" category="section-title">AppVault를 제거합니다</block>
   <block id="086d4622dbc50dc37c51fc80568681a2" category="paragraph">언제든지 AppVault 개체를 제거할 수 있습니다.</block>
   <block id="79f2a1cdb1287644a5d3176157cc43c4" category="admonition">AppVault 개체를 삭제하기 전에 AppVault CR에서 키를 제거하지<block ref="276c63528ef3085f91fb1bc80a3febc0" prefix=" " category="inline-code"></block> 마십시오. 이렇게 하면 AppVault 버킷의 잔여 데이터와 클러스터의 분리된 리소스가 생성될 수 있습니다.</block>
   <block id="49e2b1aa2d6325460e3268f3fac8fd30" category="paragraph">연결된 버킷에 저장된 모든 스냅샷과 백업을 삭제했는지 확인합니다.</block>
   <block id="33850d305da8c5eb949c81e70e40a54d" category="open-title">Kubernetes CLI를 사용하여 AppVault를 제거합니다</block>
   <block id="1921311333af338cd3327c59e3b9a4ab" category="list-text">AppVault 개체를 제거하고<block ref="c57e6773097b6f688f96a88c56c16d47" prefix=" " category="inline-code"></block> 제거할 AppVault 개체의 이름으로 바꿉니다.</block>
-  <block id="a4af4e386bb379977acdb5a465780149" category="open-title">Trident Protect CLI를 사용하여 AppVault를 제거합니다</block>
-  <block id="6c4ae71603666b23d3e05193118a3147" category="summary">protectctl 명령을 사용하여 Trident Protect 사용자 지정 리소스를 만들고 상호 작용할 수 있습니다.</block>
-  <block id="40e0842217cf3fc8b760cbd68cc14a76" category="doc">Trident Protect CLI 플러그인을 설치합니다</block>
-  <block id="bd0df34f0c12fe6faae3a05dde47f3a9" category="paragraph">Trident 유틸리티의 확장인 Trident Protect 명령줄 플러그인을 사용하여 Trident CRS(사용자 지정 리소스)를 만들고 상호 작용할 수 있습니다<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block>.</block>
   <block id="2b1100a071932a4cb5f33e22121f48fa" category="paragraph">명령줄 유틸리티를 사용하기 전에 클러스터에 액세스하는 데 사용하는 시스템에 설치해야 합니다. 컴퓨터에서 x64 또는 ARM CPU를 사용하는지 여부에 따라 다음 단계를 수행합니다.</block>
   <block id="852f04e90409df288c69ca8f37453383" category="open-title">Linux AMD64 CPU용 플러그인을 다운로드합니다</block>
-  <block id="567471047b313eb49e48a17b4213a1d1" category="list-text">Trident Protect CLI 플러그인 다운로드:</block>
   <block id="b64b2077b896969e7810dbb0a2de2f1a" category="open-title">Linux ARM64 CPU용 플러그인을 다운로드합니다</block>
   <block id="d58e744bd40cf0f8373ee5b2c7d11387" category="open-title">Mac AMD64 CPU용 플러그인을 다운로드합니다</block>
   <block id="fd3e558ef6c1af851bddabf0eb1945d7" category="open-title">Mac ARM64 CPU용 플러그인을 다운로드합니다</block>
@@ -1651,7 +1619,6 @@
   <block id="305f79cb740685921820521a57e525e5" category="paragraph">내장 플러그인 도움말 기능을 사용하여 플러그인 기능에 대한 자세한 도움말을 얻을 수 있습니다.</block>
   <block id="09b4818c610e8f967a9f5257455a3a2a" category="list-text">도움말 기능을 사용하여 사용 지침을 봅니다.</block>
   <block id="da9d072bec5b191d5b5120761a2094e5" category="section-title">명령 자동 완성 활성화</block>
-  <block id="2994879f05c105b10427c87890d6ce6a" category="paragraph">Trident Protect CLI 플러그인을 설치한 후 특정 명령에 대해 자동 완성 기능을 활성화할 수 있습니다.</block>
   <block id="df7d0aa2cf46fe870b9bba130ea4d964" category="open-title">Bash 셸에 대해 자동 완성 기능을 활성화합니다</block>
   <block id="dc8d08efd37c5c2cd13f1da4b74b2004" category="list-text">완료 스크립트 다운로드:</block>
   <block id="bbd32e1d32af84e3002666b13f548cce" category="list-text">스크립트를 포함할 홈 디렉토리에 새 디렉토리를 만듭니다.</block>
@@ -1661,8 +1628,6 @@
   <block id="45dba4471beecdb4813778042a6ccfc2" category="list-text">다운로드한 스크립트를 디렉터리로 이동합니다<block ref="d6ca46a9bae5529cb8e845fb419ba1e0" prefix=" " category="inline-code"></block>.</block>
   <block id="e2f12f24108169a5ab9aa9923f95a468" category="list-text">홈 디렉토리의 파일에 다음 줄을 추가합니다<block ref="f0f9c4057b7322a99704208706a05ba7" prefix=" " category="inline-code"></block>.</block>
   <block id="7bbf9a1a0bbcbeb6a4fef133c3975079" category="paragraph">다음 쉘 로그인 시 tridentctl-protect 플러그인으로 명령 자동 완성 기능을 사용할 수 있습니다.</block>
-  <block id="7b6672be7a52979b1357ccc3d2a45f8a" category="summary">Trident Protect를 사용하면 관리자가 관리 중인 클러스터 및 앱에 대한 로그, 메트릭, 토폴로지 정보 등 NetApp 지원에 유용한 정보를 포함하는 번들을 생성할 수 있습니다. 인터넷에 연결되어 있는 경우 CR(사용자 지정 리소스) 파일을 사용하여 NSS(NetApp 지원 사이트)에 지원 번들을 업로드할 수 있습니다.</block>
-  <block id="b9ef0ee6944eb101de3de64b82db00dd" category="doc">Trident Protect 지원 번들을 생성합니다</block>
   <block id="e984343e441956b7136d09919877b5ab" category="open-title">CR을 사용하여 지원 번들을 만듭니다</block>
   <block id="dd942fa25b8e28c96c8d05e37b0f157e" category="list-text">사용자 정의 리소스(CR) 파일을 만들고 이름을 지정합니다(예:<block ref="699c503b46d4ca3ec78905dff3704cac" prefix=" " category="inline-code"></block>).</block>
   <block id="18924d9e76d2dc9a88bddb772904461d" category="list-text">다음 특성을 구성합니다.</block>
@@ -1678,38 +1643,17 @@
   <block id="b69675775a82aaa1e3307ebbe6a45fc0" category="open-title">CLI를 사용하여 지원 번들을 생성합니다</block>
   <block id="2294988013d14e5c254422b8164d83ad" category="list-text">괄호 안의 값을 사용자 환경의 정보로 대체하여 지원 번들을 만듭니다. 은<block ref="769627afa23a2b90f925b1091e474dc5" prefix=" " category="inline-code"></block> 번들이 즉시 생성되는지 아니면 생성 시간이 스케줄에 따라 결정되는지, 또는<block ref="2b7dabba0077abe3732e0418b048a56b" prefix=" " category="inline-code"></block> 이 될 수 있는지 결정합니다<block ref="e1ba155a9f2e8c3be94020eef32a0301" prefix=" " category="inline-code"></block>. 기본 설정은<block ref="e1ba155a9f2e8c3be94020eef32a0301" prefix=" " category="inline-code"></block>입니다.</block>
   <block id="506c2c0c7f5b70af3df68c45c46f45a7" category="paragraph">예를 들면 다음과 같습니다.</block>
-  <block id="4351048276414d4fad273a0c7ad9f491" category="summary">사용자 환경이 요구 사항을 충족하는 경우 다음 단계에 따라 Trident Protect를 설치할 수 있습니다.</block>
-  <block id="9ee0b57319616120eef37546fa8e4c42" category="doc">Trident Protect를 설치하고 구성합니다</block>
-  <block id="dc48a335c2095fb6a79ee14ee62b4806" category="paragraph">사용 중인 환경이 Trident Protect 요구 사항을 충족하는 경우 다음 단계에 따라 클러스터에 Trident Protect를 설치할 수 있습니다. NetApp에서 Trident Protect를 얻거나 개인 레지스트리에서 설치할 수 있습니다. 클러스터가 인터넷에 액세스할 수 없는 경우 개인 레지스트리에서 설치하는 것이 유용합니다.</block>
   <block id="a268a576db3133de464aad1cd81ab3e1" category="inline-link-macro">지원 번들을 생성합니다</block>
-  <block id="a10e94152d7706a1754c5224358811ad" category="admonition">기본적으로 Trident Protect는 클러스터 및 관리형 애플리케이션에 대한 로그, 메트릭, 토폴로지 정보 등 파트너가 개설할 수 있는 모든 NetApp 지원 사례에 도움이 되는 지원 정보를 수집합니다. Trident Protect는 이러한 지원 번들을 일일 일정에 따라 NetApp로 전송합니다. Trident Protect를 설치할 때 선택적으로 이 지원 번들 컬렉션을 비활성화할 수 있습니다. 언제든지 수동으로 수행할 수 <block ref="dedfc5877c343d6cbe77701c7edd9bde" category="inline-link-macro-rx"></block>있습니다.</block>
-  <block id="884400bd4c8f5f2b0070bef92b055594" category="section-title">Trident Protect를 설치합니다</block>
-  <block id="1d5f2a4008fa2c223d0ebc6aea423256" category="open-title">NetApp에서 Trident Protect를 설치합니다</block>
   <block id="76d9687f27080e6c2da9c8a0d64fbd42" category="list-text">Trident Protect CRD를 설치합니다.</block>
-  <block id="a29c2442da7eaa2adc245c73a4fa8969" category="list-text">Helm을 사용하여 다음 명령 중 하나를 사용하여 Trident Protect를 설치합니다. 클러스터에 할당되고 클러스터의 백업 및 스냅샷을 식별하는 데 사용되는 클러스터 이름으로 바꿉니다<block ref="b90b2ffedb63ca3bd8795caf4397715e" prefix=" " category="inline-code"></block>.</block>
-  <block id="7eccc1ff44845b9328911013fd4f479d" category="list-text">Trident Protect를 정상적으로 설치합니다.</block>
-  <block id="567ddef6d1b44dd7de5bb03fcf15e432" category="list-text">Trident Protect를 설치하고 예약된 일일 Trident Protect AutoSupport 지원 번들 업로드를 비활성화합니다.</block>
-  <block id="f1db582519ebcfcc20d90e41c0c5e9cc" category="open-title">개인 레지스트리로부터 Trident Protect를 설치합니다</block>
-  <block id="73dac5f92be0a06ecbcb1b8139b40593" category="paragraph">Kubernetes 클러스터가 인터넷에 액세스할 수 없는 경우 개인 이미지 레지스트리에서 Trident Protect를 설치할 수 있습니다. 이 예제에서는 대괄호 안의 값을 사용자 환경의 정보로 바꿉니다.</block>
   <block id="dfb8cfd789dde682f000a96e0aabb1f1" category="list-text">다음 이미지를 로컬 컴퓨터로 가져와서 태그를 업데이트한 다음 개인 레지스트리에 푸시합니다.</block>
-  <block id="2dcd4437dbff8aff3bc16ac15a71b74d" category="list-text">Trident Protect 시스템 네임스페이스를 생성합니다.</block>
   <block id="e0f6b701766eb28d805d7ba1e820f582" category="list-text">레지스트리에 로그인합니다.</block>
   <block id="814565bb5d7e7359fff967986fd4195a" category="list-text">개인 레지스트리 인증에 사용할 풀 암호를 만듭니다.</block>
-  <block id="c8dac6733f0c00d0b3b8b239841a0255" category="list-text">라는 이름의 파일을<block ref="5744e710490761bdd5b4603b9b0487a7" prefix=" " category="inline-code"></block> 만듭니다. Trident Protect에 다음 설정이 포함되어 있는지 확인합니다.</block>
-  <block id="d9802724acbde7ce7749f0884262496a" category="section-title">Trident Protect 컨테이너 리소스 제한을 지정합니다</block>
-  <block id="723ff7c28b60307db94ddb35dd6cc517" category="paragraph">Trident Protect를 설치한 후 구성 파일을 사용하여 Trident Protect 컨테이너에 대한 리소스 제한을 지정할 수 있습니다. 리소스 제한을 설정하면 Trident Protect 작업에서 사용되는 클러스터 리소스의 양을 제어할 수 있습니다.</block>
   <block id="45d7099b61647936da59ccfbaa49ca5c" category="list-text">라는 이름의 파일을<block ref="e66ad8c89b28dc43a24e6e1689a79cdc" prefix=" " category="inline-code"></block> 만듭니다.</block>
-  <block id="9f83417f7d6c999c56b0dcc3b274be23" category="list-text">환경 요구 사항에 따라 Trident Protect 컨테이너에 대한 리소스 제한 옵션을 파일에 채웁니다.</block>
   <block id="816f46c4a8435f7f0f1498054f254865" category="paragraph">다음 예제 구성 파일은 사용 가능한 설정을 보여 주며 각 리소스 제한에 대한 기본 vaules를 포함합니다.</block>
   <block id="956fe3fe2ad4f9cb1b569d66b4ff1db5" category="list-text">파일의 값을 적용합니다<block ref="e66ad8c89b28dc43a24e6e1689a79cdc" prefix=" " category="inline-code"></block>.</block>
-  <block id="86e8b34710172d33dcae839e1f4dd07e" category="summary">응용 프로그램 CR 및 연결된 AppVault CR을 생성하여 Trident Protect에서 관리하려는 응용 프로그램을 인식하도록 할 수 있습니다.</block>
-  <block id="bf4313699bccd15d73aa8653cfdfd754" category="doc">Trident Protect로 관리할 애플리케이션을 정의합니다</block>
-  <block id="1e10d655f5307ce7f79aeee68a9e72f3" category="paragraph">애플리케이션 CR 및 연결된 AppVault CR을 생성하여 Trident Protect로 관리할 애플리케이션을 정의할 수 있습니다.</block>
   <block id="58bd941b0268654136e17a3f6361fa75" category="section-title">AppVault CR을 작성합니다</block>
   <block id="f5ddee36f3439fbf6875de509925b804" category="inline-link-macro">AppVault 사용자 지정 리소스.</block>
-  <block id="2c2c79b6a4bc3f3b90fed9b96ab44d05" category="paragraph">응용 프로그램에서 데이터 보호 작업을 수행할 때 사용할 AppVault CR을 만들어야 하며 Trident Protect가 설치된 클러스터에 AppVault CR이 있어야 합니다. AppVault CR은 사용자 환경에 따라 다릅니다. AppVault CRS의 예는 을 참조하십시오 <block ref="7e7838343a821a01b97d2b866c568a54" category="inline-link-macro-rx"></block></block>
   <block id="2fd92693952062fc00d949899370185d" category="section-title">응용 프로그램을 정의합니다</block>
-  <block id="da305154e58c2f6709cee1cca6b2d8c8" category="paragraph">Trident Protect로 관리하려는 각 애플리케이션을 정의해야 합니다. 응용 프로그램 CR을 수동으로 생성하거나 Trident Protect CLI를 사용하여 관리할 응용 프로그램을 정의할 수 있습니다.</block>
   <block id="7eb786201a1068df31c2a8d7805c50bf" category="open-title">CR을 사용하여 응용 프로그램을 추가합니다</block>
   <block id="b4b10aa7102ef4de9ba1d5672445c895" category="list-text">대상 응용 프로그램 CR 파일을 만듭니다.</block>
   <block id="0f14679ea6b53d676a4e19300d32937e" category="list-text">사용자 정의 리소스(CR) 파일을 만들고 이름을 지정합니다(예:<block ref="6e1c6964e1bb7e391ff353b09e122d80" prefix=" " category="inline-code"></block>).</block>
@@ -1719,7 +1663,6 @@
   <block id="edb32c41feaaffb2d7ff10dac9d80312" category="open-title">CLI를 사용하여 애플리케이션을 추가합니다</block>
   <block id="c7b530e751fba67f8910728e6bfca47d" category="list-text">응용 프로그램 정의를 만들고 적용하여 괄호 안의 값을 사용자 환경의 정보로 바꿉니다. 다음 예제에 표시된 인수를 사용하여 쉼표로 구분된 목록을 사용하여 응용 프로그램 정의에 네임스페이스와 리소스를 포함할 수 있습니다.</block>
   <block id="0ef657dffb550796349fff7260ee7b1f" category="summary">백업 또는 스냅샷 데이터를 다른 클러스터 또는 스토리지 클래스로 복원할 수 있습니다</block>
-  <block id="b6a8ee5a5280d899b4ea1be0f8697335" category="doc">Trident Protect를 사용하여 애플리케이션을 마이그레이션합니다</block>
   <block id="f0947115fd72dc8926d993b03e13a329" category="paragraph">백업 또는 스냅샷 데이터를 다른 클러스터 또는 스토리지 클래스로 복원하여 클러스터 또는 스토리지 클래스 간에 애플리케이션을 마이그레이션할 수 있습니다.</block>
   <block id="85ff05ce333a3cc83e4b1bece0b1a885" category="admonition">애플리케이션을 마이그레이션하면 애플리케이션에 대해 구성된 모든 실행 후크가 앱과 함께 마이그레이션됩니다. 복원 후 실행 후크가 있는 경우 복구 작업의 일부로 자동으로 실행됩니다.</block>
   <block id="dea2f94d534ebdd522c0137cd11f63bf" category="section-title">백업 및 복원 작업</block>
@@ -1737,7 +1680,6 @@
   <block id="1c7b9a68982aa2ad5f1d69eeb5bdf99e" category="inline-link-macro">백업에서 데이터를 복원합니다</block>
   <block id="e27031b9d0bffffcf2abd2136eed21f5" category="list-text"><block ref="71bc4096317f8eb78a9951851bc1165b" category="inline-link-macro-rx"></block>..</block>
   <block id="403ecb1db6fa0f1bb20e787bb5f5dacd" category="section-title">다른 클러스터에 클론 복제</block>
-  <block id="fd8585ec0c8ba7001713251f9ab9c69e" category="paragraph">애플리케이션을 다른 클러스터에 클론 생성(클러스터 간 클론 수행)하려면 소스 클러스터에 백업을 생성한 다음 다른 클러스터에 백업을 복원합니다. 대상 클러스터에 Trident Protect가 설치되어 있는지 확인하십시오.</block>
   <block id="a1f41e52e9ddbd9f87ecd032c237b1c0" category="inline-link-macro">SnapMirror 복제</block>
   <block id="f6acb98f21e25882aaaa267339abcc92" category="admonition">을 사용하여 서로 다른 클러스터 간에 애플리케이션을 복제할 수 <block ref="69314cba6d14bf88b8e850c978056766" category="inline-link-macro-rx"></block>있습니다.</block>
   <block id="fe961357dbe4b6bf8b5503f4919ea35c" category="list-text">백업이 포함된 객체 스토리지 버킷의 AppVault CR이 대상 클러스터에 구성되어 있는지 확인합니다.</block>
@@ -1768,10 +1710,6 @@
   <block id="4f7a601ab79eb07bd8f0460d0e4ebccf" category="list-text"><block ref="c322d3de29d2b0c5e2e011dad5e77df2" prefix=" " category="inline-code"></block>인수에 네임스페이스 및 스냅숏 이름이 형식으로<block ref="7310980de32cd5ca687291f4b01b2e19" prefix=" " category="inline-code"></block> 사용됩니다.</block>
   <block id="9a3152a9bfe0e487c80e9e42ee22e9f0" category="list-text">이<block ref="65e11896cb6b19f7dcb2432e67c74725" prefix=" " category="inline-code"></block> 인수는 콜론으로 구분된 네임스페이스를 사용하여 소스 네임스페이스를 올바른 대상 네임스페이스에 형식<block ref="07c70c21dcae158a4b2f0d389a52981b" prefix=" " category="inline-code"></block>으로 매핑합니다.</block>
   <block id="3909674c7e76459d193fe9c27f127cbf" category="summary">자동화된 보호 정책을 사용하거나 필요에 따라 스냅샷 및 백업을 수행하여 모든 애플리케이션을 보호합니다.</block>
-  <block id="8686ed080978191a10848ee52cd0c87a" category="doc">Trident Protect를 사용하여 애플리케이션을 보호합니다</block>
-  <block id="da1046077b664fa54e4894632960137d" category="paragraph">Trident Protect에서 관리하는 모든 앱은 자동화된 보호 정책을 사용하거나 임시적으로 스냅샷과 백업을 생성하여 보호할 수 있습니다.</block>
-  <block id="e27f117e119beccd01579e6a8d0151fb" category="inline-link-macro">Trident Protect를 사용하여 파일 시스템 중지를 구성하는 방법에 대해 자세히 알아보십시오</block>
-  <block id="9efebf2c277b6c382e759b6b916fd0dd" category="admonition">데이터 보호 작업 중에 파일 시스템을 고정 및 고정 해제하도록 Trident Protect를 구성할 수 있습니다. <block ref="d0a15703ee89b8fa8b780fb2dbace2bd" category="inline-link-macro-rx"></block>..</block>
   <block id="2530ad97c013f5d8d9c69004a4e7ee67" category="section-title">필요 시 스냅샷을 생성합니다</block>
   <block id="9bbdcd6083ca1f29424ab7d4e6e6d3f5" category="paragraph">언제든지 주문형 스냅샷을 생성할 수 있습니다.</block>
   <block id="ca5d8da21766c0b74083bb89d9b98f19" category="open-title">CR을 사용하여 스냅샷을 생성합니다</block>
@@ -1828,21 +1766,13 @@
   <block id="b030755f5014f11eb86aee527d4ef872" category="paragraph">명령줄을 사용하여 진행 중이거나, 완료되었거나, 실패한 백업 작업의 상태를 확인할 수 있습니다.</block>
   <block id="83fe182363ccdea33046e538aec4ac23" category="list-text">다음 명령을 사용하여 백업 작업의 상태를 검색하여 대괄호의 값을 사용자 환경의 정보로 바꿉니다.</block>
   <block id="bdd3c7731ba2eae7059bfebd0d56c7e3" category="section-title">Azure-NetApp-files(ANF) 작업을 위한 백업 및 복원이 가능합니다</block>
-  <block id="e9730662640f8238dbf4ed30d6292ecb" category="paragraph">Trident Protect를 설치한 경우 Azure-NetApp-files 스토리지 클래스를 사용하고 Trident 24.06 이전에 생성된 스토리지 백엔드에 공간 효율적인 백업 및 복원 기능을 사용할 수 있습니다. 이 기능은 NFSv4 볼륨에 적용되며 용량 풀에서 추가 공간을 사용하지 않습니다.</block>
   <block id="a3ba5a3fd33b03f148e52fd833cda7c3" category="paragraph">다음을 확인합니다.</block>
-  <block id="a6cdb2021351db573212b98138416717" category="list-text">Trident Protect가 설치되어 있습니다.</block>
-  <block id="1b56af5799cb507ae72605b020a620df" category="list-text">Trident Protect에서 애플리케이션을 정의했습니다. 이 응용 프로그램은 이 절차를 완료할 때까지 제한된 보호 기능을 제공합니다.</block>
   <block id="a9910fb38baec2aa849c3ea6191b1cf9" category="list-text"><block ref="bc5779a2d33eeb1304bae57f15920cfc" prefix=" " category="inline-code"></block>스토리지 백엔드의 기본 스토리지 클래스로 선택했습니다.</block>
   <block id="579cc8ac85c74501fbfa1bac4d013c1f" category="example-title">구성 단계를 위해 확장합니다</block>
   <block id="b1927eae954479de09c736cae4ed08dd" category="list-text">Trident 24.10으로 업그레이드하기 전에 ANF 볼륨을 생성한 경우 Trident에서 다음을 수행하십시오.</block>
   <block id="119a6ab21356c173b517e4baf8ab21d3" category="list-text">Azure-NetApp-files 기반이며 애플리케이션과 연결된 각 PV에 대해 스냅샷 디렉토리를 활성화합니다.</block>
   <block id="9cb0a94d3b3051cae7cda63d4c5aa1d6" category="list-text">연결된 각 PV에 대해 스냅샷 디렉토리가 활성화되었는지 확인합니다.</block>
   <block id="54472d1da4b0c6eadf8684e846b25dcc" category="paragraph">응답:</block>
-  <block id="77c9498d5c74a08af1c5918bd5fd8ee1" category="paragraph">스냅샷 디렉토리가 활성화되지 않은 경우 Trident Protect는 일반 백업 기능을 선택하여 백업 프로세스 중에 용량 풀의 공간을 일시적으로 사용합니다. 이 경우 용량 풀에서 백업 중인 볼륨 크기의 임시 볼륨을 생성할 수 있는 충분한 공간이 있는지 확인합니다.</block>
-  <block id="2efd4c8775ce47d6aa29183091d2a4e2" category="paragraph">Trident Protect를 통해 애플리케이션이 백업 및 복원 준비가 되어 있습니다. 각 PVC는 백업 및 복원을 위해 다른 응용 프로그램에서 사용할 수도 있습니다.</block>
-  <block id="697f51e8965440d487236d46d469510d" category="summary">운영 환경, 애플리케이션 클러스터, 애플리케이션 및 라이센스의 준비 상태를 확인하는 것으로 시작하십시오. Trident Protect를 배포 및 운영하기 위해 사용자 환경이 이러한 요구 사항을 충족하는지 확인합니다.</block>
-  <block id="dc5b2d9ecd49d3e5ee37059e2d80512f" category="section-title">Trident는 Kubernetes 클러스터 호환성을 보호합니다</block>
-  <block id="c8f91050b5ec3e677d9c7e16e424f9bc" category="paragraph">Trident Protect는 다음과 같은 완전관리형 및 자가 관리형 Kubernetes 오퍼링과 호환됩니다.</block>
   <block id="480c9b5f979d1ce95ea2a58b09826d1b" category="list-text">Amazon Elastic Kubernetes Service(EKS)</block>
   <block id="974030a30a48754684d05541fd5e96c9" category="list-text">Google Kubernetes Engine(GKE)</block>
   <block id="f3bd1985b243e9691bbbd63c6702344b" category="list-text">Microsoft Azure Kubernetes Service(AKS)</block>
@@ -1851,9 +1781,6 @@
   <block id="c395793804bd9dfa82ff727781faf3c5" category="list-text">VMware Tanzu 포트폴리오</block>
   <block id="1de3a8db0dcc39abe68ae2b506a8f0ac" category="list-text">업스트림 Kubernetes</block>
   <block id="9ac0dd27d420b7b48ca72e463ae95e18" category="inline-link">참조하십시오</block>
-  <block id="664d28801abc192d5c7dfd7bfa758e98" category="admonition">Trident Protect를 설치하는 클러스터가 실행 중인 스냅샷 컨트롤러와 관련 CRD로 구성되어 있는지 확인합니다. 스냅샷 컨트롤러를 설치하려면 을<block ref="5d66944a2971d1b9b5f332812a6e737b" category="inline-link-rx"></block>참조하십시오.</block>
-  <block id="f6fbfc99b1ed4fcb2dee65355a088f0b" category="section-title">Trident는 스토리지 백엔드 호환성을 보호합니다</block>
-  <block id="dc754c1df3be627f8c83600f4c69aade" category="paragraph">Trident Protect는 다음 스토리지 백엔드를 지원합니다.</block>
   <block id="ca3930511e1c5997e851e891e33190ab" category="list-text">ONTAP 스토리지 어레이</block>
   <block id="e254891423d193d0e614eaf948880de5" category="paragraph">스토리지 백엔드가 다음 요구 사항을 충족하는지 확인합니다.</block>
   <block id="79a749f4efd0990a7c186a6c8b0b8f85" category="list-text">클러스터에 연결된 NetApp 스토리지가 Astra Trident 24.02 이상을 사용하는지 확인합니다(Trident 24.10 권장).</block>
@@ -1861,15 +1788,12 @@
   <block id="46a6a1c4196079f75ce0891927733cf0" category="list-text">최신 Astra Control Provisioner(Astra Trident 24.06.1 기준으로 기본적으로 설치 및 활성화됨)가 있는지 확인합니다.</block>
   <block id="1efa9b79a24750278cc3058eaf2ead00" category="list-text">NetApp ONTAP 스토리지 백엔드가 있는지 확인합니다.</block>
   <block id="c9a524733ac9eb25fbf1980538b5437d" category="list-text">백업을 저장할 오브젝트 스토리지 버킷을 구성했는지 확인합니다.</block>
-  <block id="953216b11f9b494b0b28bcec605cbea1" category="list-text">응용 프로그램 또는 응용 프로그램 데이터 관리 작업에 사용할 응용 프로그램 네임스페이스를 만듭니다. Trident Protect는 이러한 네임스페이스를 자동으로 만들지 않습니다. 사용자 지정 리소스에 존재하지 않는 네임스페이스를 지정하면 작업이 실패합니다.</block>
   <block id="f4ce5a5f08fdc6de51b81cc305a21fd0" category="section-title">NAS 경제 볼륨에 대한 요구 사항</block>
-  <block id="85641afe25671a9190f50185f6e499d5" category="paragraph">Trident Protect는 NAS 경제 볼륨에 대한 백업 및 복원 작업을 지원합니다. 현재 NAS 경제 볼륨으로의 스냅샷, 클론, SnapMirror 복제는 지원되지 않습니다. Trident Protect와 함께 사용할 각 NAS 경제 볼륨에 대해 스냅샷 디렉토리를 활성화해야 합니다.</block>
   <block id="43da051477acee60af3ad54451d3d090" category="paragraph">일부 애플리케이션은 스냅샷 디렉토리를 사용하는 볼륨과 호환되지 않습니다. 이러한 애플리케이션의 경우 ONTAP 스토리지 시스템에서 다음 명령을 실행하여 스냅샷 디렉토리를 숨겨야 합니다.</block>
   <block id="beb2d6f4cedfc5b87a39d1766369fade" category="paragraph">각 NAS 경제 볼륨에 대해 다음 명령을 실행하여 스냅샷 디렉토리를 설정할 수 있으며, 변경할 볼륨의 UUID로 바꿀 수<block ref="a86374477aa0b3d451812bb6ced0458d" prefix=" " category="inline-code"></block> 있습니다.</block>
   <block id="70117c3862b4c793cc80799862e6fde9" category="admonition">Trident 백엔드 구성 옵션을 로<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block> 설정하면 기본적으로 새 볼륨에 대해 스냅샷 디렉토리를 설정할 수<block ref="7ad68fdac2eac069eb8ed0fc45b0fb74" prefix=" " category="inline-code"></block> 있습니다. 기존 볼륨은 영향을 받지 않습니다.</block>
   <block id="ac84b7596169ab3fb6c24e8a5c85c234" category="section-title">KubeVirt VM으로 데이터 보호</block>
   <block id="3ab436334531996382ccf17d7d3a4d69" category="section-title">SnapMirror 복제에 대한 요구 사항</block>
-  <block id="3253fc268f721dc313863b81e2a0762f" category="paragraph">NetApp SnapMirror는 다음 ONTAP 솔루션에 대해 Trident Protect와 함께 사용할 수 있습니다.</block>
   <block id="2b304856171196502641312a496c6d54" category="list-text">NetApp ASA</block>
   <block id="8bf5bd6530ea430a8edac8a795165179" category="list-text">NetApp AFF</block>
   <block id="4ba8114dd624dc2130553b7742f70d88" category="list-text">NetApp FAS</block>
@@ -1877,7 +1801,6 @@
   <block id="0f0b99ea2f70cd363c2c6a279f74e760" category="list-text">NetApp Cloud Volumes ONTAP를 참조하십시오</block>
   <block id="9f91d52d37c43ec162560596ac851ec9" category="section-title">SnapMirror 복제를 위한 ONTAP 클러스터 요구 사항</block>
   <block id="6ed8f95cb1dcd3baff756120151793a9" category="paragraph">SnapMirror 복제를 사용하려는 경우 ONTAP 클러스터가 다음 요구 사항을 충족하는지 확인하십시오.</block>
-  <block id="48d3e1a20815766a05a0edaac0e45679" category="list-text">* Astra Control Provisioner 또는 Trident *: Astra Control Provisioner 또는 Trident는 ONTAP를 백엔드로 활용하는 소스 및 대상 Kubernetes 클러스터 모두에 존재해야 합니다. Trident Protect는 다음 드라이버를 통해 지원되는 스토리지 클래스를 사용하여 NetApp SnapMirror 기술을 통한 복제를 지원합니다.</block>
   <block id="00055dac2ba112b87a95a368075b9561" category="list-text"><block ref="8321592ce24c8a122ecf26a63cfca407" prefix="" category="inline-code"></block></block>
   <block id="cd17e7ed84c40a0ff5ecb8b625b1f186" category="list-text"><block ref="73a3350a1b91aeb6e2836fdf5975672c" prefix="" category="inline-code"></block></block>
   <block id="ba84728ffba482ceb12371a53be2f636" category="inline-link">ONTAP의 SnapMirror 라이센스 개요</block>
@@ -1888,15 +1811,9 @@
   <block id="ddae31913091b421eaff815ed1e19b4f" category="list-text">* 클러스터 및 SVM *: ONTAP 스토리지 백엔드를 피어링해야 합니다. 자세한 내용은 을<block ref="36ecaf21e9ca81a83e736deb4ff5c657" category="inline-link-rx"></block> 참조하십시오.</block>
   <block id="94ac6b3955eab183cb88ab17c91000eb" category="admonition">두 ONTAP 클러스터 간의 복제 관계에 사용되는 SVM 이름이 고유한지 확인합니다.</block>
   <block id="ab44b8630d7609691da158960d9b30b6" category="list-text">* Astra Control Provisioner 또는 Trident 및 SVM *: 피어링된 원격 SVM을 대상 클러스터의 Astra Control Provisioner 또는 Trident에서 사용할 수 있어야 합니다.</block>
-  <block id="e05c29680eacd6a4c163eefe138ff9fd" category="list-text">* 관리되는 백엔드 *: 복제 관계를 만들려면 Trident Protect에서 ONTAP 스토리지 백엔드를 추가 및 관리해야 합니다.</block>
-  <block id="1000954a94920c8ffd3752b548978ccf" category="list-text">* over TCP *: Trident Protect는 NVMe over TCP 프로토콜을 사용하는 스토리지 백엔드에 대해 NetApp SnapMirror 복제를 지원하지 않습니다.</block>
   <block id="57fe82c052fea1c269ca2b14e92e80d3" category="section-title">SnapMirror 복제를 위한 Trident/ONTAP 구성</block>
-  <block id="59292a70a610fc937685ef1c3a3b5cb1" category="paragraph">Trident Protect를 사용하려면 소스 및 대상 클러스터 모두에 대해 복제를 지원하는 스토리지 백엔드를 하나 이상 구성해야 합니다. 소스 및 대상 클러스터가 동일한 경우 대상 애플리케이션은 최상의 복원력을 위해 소스 애플리케이션과 다른 스토리지 백엔드를 사용해야 합니다.</block>
-  <block id="4b92c534580865d96f1efb9f86289249" category="summary">Trident Protect를 사용하여 스냅샷 또는 백업에서 애플리케이션을 복원할 수 있습니다. 애플리케이션을 동일한 클러스터로 복구할 경우 기존 스냅샷에서 복구하는 속도가 빨라집니다.</block>
-  <block id="0539043b2ec0bd1bfae64dc58173dec7" category="doc">Trident Protect를 사용하여 애플리케이션을 복원합니다</block>
   <block id="f346d32ba5d9c332bf8577bf1bacda07" category="admonition">Application Restore 시 해당 Application에 설정된 모든 execution hook이 App으로 복구된다. 복원 후 실행 후크가 있는 경우 복구 작업의 일부로 자동으로 실행됩니다.</block>
   <block id="a082effb2d23d4eb077129001a77582f" category="section-title">백업에서 다른 네임스페이스로 복원합니다</block>
-  <block id="b0e7049d5aeb967991b6b3a21db08de3" category="paragraph">BackupRestore CR을 사용하여 다른 네임스페이스로 백업을 복원하면 Trident Protect는 새 네임스페이스에서 응용 프로그램을 복원하고 복원된 응용 프로그램에 대한 응용 프로그램 CR을 만듭니다. 복원된 애플리케이션을 보호하려면 필요 시 백업 또는 스냅샷을 생성하거나 보호 일정을 설정합니다.</block>
   <block id="cff063350a0daf1b0ee4c6c97eb2e2de" category="admonition">기존 리소스가 있는 다른 네임스페이스로 백업을 복원해도 백업의 리소스와 이름을 공유하는 리소스는 변경되지 않습니다. 백업의 모든 리소스를 복구하려면 타겟 네임스페이스를 삭제하고 다시 생성하거나 백업을 새 네임스페이스로 복원하십시오.</block>
   <block id="5a3a68cc2fb27d13057472b4869353f1" category="open-title">CR을 사용합니다</block>
   <block id="0334c5d881452d9144d4edf93d44ff85" category="list-text">CR(사용자 정의 리소스) 파일을 만들고 이름을<block ref="aa3356b96c40153ef83fe9854ede7a70" prefix=" " category="inline-code"></block>지정합니다.</block>
@@ -1917,9 +1834,7 @@
   <block id="7fa8874b1f645ca2af9d81b51985b8fb" category="paragraph">원래 클러스터에 문제가 있는 경우 백업을 다른 클러스터로 복구할 수 있습니다.</block>
   <block id="17e2d63e3b45ecbfe13bcc32fec929d0" category="paragraph">* 시작하기 전에 *</block>
   <block id="dd4ee610bd1d035c73bc0cbcd80e46da" category="paragraph">다음 필수 구성 요소가 충족되는지 확인합니다.</block>
-  <block id="1d6028c560c8f6dbee841737e60a3d9d" category="list-text">대상 클러스터에 Trident Protect가 설치되어 있습니다.</block>
   <block id="b20f8883edb9068c67a2faeb3c083d38" category="list-text">대상 클러스터에는 백업이 저장되는 소스 클러스터와 동일한 AppVault의 버킷 경로에 대한 액세스 권한이 있습니다.</block>
-  <block id="0425d0358a4cba7a7cce5ddd727ab6a2" category="list-text">Trident Protect CLI 플러그인을 사용하여 대상 클러스터에서 AppVault CR의 가용성을 확인합니다.</block>
   <block id="1ff83a5266e9e025c2984e0c10dea90e" category="admonition">응용 프로그램 복구용 네임스페이스가 대상 클러스터에 있는지 확인합니다.</block>
   <block id="8d433ae9a21c49e9e5433ebd408605c0" category="list-text">대상 클러스터에서 사용 가능한 AppVault의 백업 컨텐츠를 봅니다.</block>
   <block id="378e6f0ba7080535a4462b5311befb40" category="paragraph">이 명령을 실행하면 원래 클러스터, 해당 응용 프로그램 이름, 타임스탬프 및 아카이브 경로를 비롯하여 AppVault에 사용 가능한 백업이 표시됩니다.</block>
@@ -1928,7 +1843,6 @@
   <block id="fceebbe32c1f7b24c54d6a4e8a0fa776" category="admonition">BackupRestore CR을 사용할 수 없는 경우 2단계에서 언급한 명령을 사용하여 백업 내용을 볼 수 있습니다.</block>
   <block id="4ef55c1fec2de9218af40d16cbc021a4" category="list-text">다음 명령을 사용하여 응용 프로그램을 복원하고 대괄호 안의 값을 사용자 환경의 정보로 바꿉니다. 네임스페이스 매핑 인수는 콜론으로 구분된 네임스페이스를 사용하여 소스 네임스페이스를 Source1:dest1, source2:dest2 형식으로 올바른 대상 네임스페이스에 매핑합니다. 예를 들면 다음과 같습니다.</block>
   <block id="db4c6bfd26488f4d6ab2ec6129b067d8" category="section-title">스냅샷에서 다른 네임스페이스로 복구합니다</block>
-  <block id="4b405223d9feceac91c5ef8df77b1961" category="paragraph">사용자 지정 리소스(CR) 파일을 사용하여 스냅샷에서 데이터를 다른 네임스페이스 또는 원래 소스 네임스페이스로 복원할 수 있습니다. SnapshotRestore CR을 사용하여 스냅샷을 다른 네임스페이스로 복구할 경우 Trident Protect는 새 네임스페이스에서 애플리케이션을 복원하고 복원된 애플리케이션에 대한 애플리케이션 CR을 생성합니다. 복원된 애플리케이션을 보호하려면 필요 시 백업 또는 스냅샷을 생성하거나 보호 일정을 설정합니다.</block>
   <block id="941a76112ae80457a7a22ae552218be9" category="section-title">스냅샷에서 원래 네임스페이스로 복구합니다</block>
   <block id="a392e5395f0751460dc460cd6ec5e89d" category="paragraph">언제든지 스냅샷을 원래 네임스페이스로 복구할 수 있습니다.</block>
   <block id="4d18dba9a79fbe92e2bb99f0a9300df3" category="list-text">CR(사용자 정의 리소스) 파일을 만들고 이름을<block ref="620b0dae36dbe6aeaae5d993f961c634" prefix=" " category="inline-code"></block>지정합니다.</block>
@@ -1937,23 +1851,9 @@
   <block id="ba2718de6be08337811d049982d9f03f" category="section-title">복구 작업의 상태를 확인합니다</block>
   <block id="97dedb929a195e839af5f7d7f8ef0ec5" category="paragraph">명령줄을 사용하여 진행 중이거나, 완료되었거나, 실패한 복구 작업의 상태를 확인할 수 있습니다.</block>
   <block id="c076e91339c1f092aaad1d36a9c18a7a" category="list-text">다음 명령을 사용하여 복원 작업의 상태를 검색하여 대괄호의 값을 사용자 환경의 정보로 바꿉니다.</block>
-  <block id="3b236bd888d7d3460e381b13adb8f6b8" category="summary">평가판을 정식 버전으로 업그레이드하는 경우 Trident Protect 구성 요소를 제거해야 할 수 있습니다.</block>
-  <block id="1bc8acdabd6fc240195da5f19b986dd6" category="doc">Trident Protect를 제거합니다</block>
-  <block id="fb509ce83a58c3beeca23f5d55c8d75c" category="paragraph">Trident Protect를 제거하려면 다음 단계를 수행하십시오.</block>
-  <block id="f6116aed83b3970c50d28447d27f4f97" category="list-text">Trident Protect CR 파일을 제거합니다.</block>
-  <block id="aec02c2a1b714f40a949aa18d1f2d588" category="list-text">Trident Protect 제거:</block>
-  <block id="20c06650be80c297c0e4dc5ae977d44f" category="list-text">Trident Protect 네임스페이스 제거:</block>
-  <block id="c14dcfe7b0231c7a77642ffab50a55eb" category="summary">Trident Protect를 최신 버전으로 업그레이드하여 새로운 기능 또는 버그 수정을 활용할 수 있습니다.</block>
-  <block id="91d6fa36b819133d3be4dc9c8bf2cf22" category="doc">Trident Protect를 업그레이드합니다</block>
-  <block id="9a4ef497aa1e88e71b08a41b069a9cf4" category="paragraph">Trident Protect를 업그레이드하려면 다음 단계를 수행하십시오.</block>
   <block id="08583ac87350c1205f57ca5d8c629482" category="list-text">Trident Helm 리포지토리를 업데이트합니다.</block>
-  <block id="0f5b1b3a9bfb872579b78d2db623d3d8" category="list-text">Trident Protect CRD 업그레이드:</block>
-  <block id="a16ec228f0e3336de76f224b11d860d9" category="list-text">Trident Protect 업그레이드:</block>
-  <block id="a8c1fc9f09b8338dd9f8badd5c3d30c0" category="summary">Trident Protect를 사용하여 앱에 대한 사용자 지정 실행 후크를 생성할 수 있습니다. 실행 후크를 만들려면 소유자, 관리자 또는 구성원 권한이 있어야 합니다.</block>
-  <block id="873e2eae9a82cbe9c291ade077f017d2" category="doc">Trident Protect 실행 후크를 관리합니다</block>
   <block id="ccd62d676165e34c2e9c6d088c06e70f" category="paragraph">실행 후크는 관리되는 앱의 데이터 보호 작업과 함께 실행되도록 구성할 수 있는 사용자 지정 작업입니다. 예를 들어 데이터베이스 앱이 있는 경우 실행 후크를 사용하여 스냅샷 전에 모든 데이터베이스 트랜잭션을 일시 중지하고 스냅샷이 완료된 후 트랜잭션을 다시 시작할 수 있습니다. 따라서 애플리케이션 정합성이 보장되는 스냅샷이 보장됩니다.</block>
   <block id="83fbf1604bedff410ea11872b40ab9f0" category="section-title">실행 후크 유형</block>
-  <block id="d702711249a4d54c15ce81c80152b8e7" category="paragraph">Trident Protect는 실행 가능한 시기에 따라 다음과 같은 유형의 실행 후크를 지원합니다.</block>
   <block id="9c6a9cc04a4d5840a5d237b232190a35" category="list-text">사전 스냅샷</block>
   <block id="65db6b15c7f05c97a1647c11699053e3" category="list-text">사후 스냅샷</block>
   <block id="0a2055495a94f091655a2e4d421cffe2" category="list-text">사전 백업</block>
@@ -1963,7 +1863,6 @@
   <block id="a9f57378169166a88acf61a71442e5fb" category="section-title">실행 순서</block>
   <block id="e8132483e0cae3565c87c193b3fd8f57" category="paragraph">데이터 보호 작업이 실행되면 실행 후크 이벤트가 다음 순서로 발생합니다.</block>
   <block id="4a6ccf1757fd10978b3fb28d81187dcc" category="list-text">해당되는 모든 사용자 정의 사전 작업 실행 후크는 해당 컨테이너에서 실행됩니다. 필요한 만큼 사용자 지정 사전 작업 후크를 만들고 실행할 수 있지만, 이 후크의 실행 순서는 보장되거나 구성할 수 없습니다.</block>
-  <block id="08810911e9a818361e28207072354bd4" category="list-text">해당하는 경우 파일 시스템 작동이 중지됩니다. <block ref="d0a15703ee89b8fa8b780fb2dbace2bd" category="inline-link-macro-rx"></block>..</block>
   <block id="cfbed2286711be0cf6dbc12aba602709" category="list-text">데이터 보호 작업이 수행됩니다.</block>
   <block id="caf47630bbafdc416f6b6ecdb585e83e" category="list-text">해당되는 경우 동결된 파일 시스템은 동결 해제됩니다.</block>
   <block id="9465fae733e0b5fdcd6e532ef8a78b08" category="list-text">해당되는 모든 사용자 지정 작업 후 실행 후크는 해당 컨테이너에서 실행됩니다. 필요한 만큼 사용자 지정 사후 작업 후크를 만들고 실행할 수 있지만 작업 후 후크의 실행 순서는 보장되거나 구성할 수 없습니다.</block>
@@ -1977,21 +1876,17 @@
   <block id="f99748fb4b1cf592516b60937743c52d" category="section-title">사용자 정의 실행 후크에 대한 중요 참고 사항</block>
   <block id="6b8e88c5f4231fbc6994f3a29dd893af" category="paragraph">앱에 대한 실행 후크를 계획할 때 다음 사항을 고려하십시오.</block>
   <block id="c9333604c0c05d7727ea70ec5f1b806b" category="list-text">실행 후크는 스크립트를 사용하여 작업을 수행해야 합니다. 많은 실행 후크가 동일한 스크립트를 참조할 수 있습니다.</block>
-  <block id="cc0a52984aa9087cc5fca898c4dc1caa" category="list-text">Trident Protect는 실행 후크를 사용하는 스크립트를 실행 가능한 셸 스크립트 형식으로 작성해야 합니다.</block>
   <block id="6a7d60379bb9015c0bfe02adcc54d0b5" category="list-text">스크립트 크기는 96KB로 제한됩니다.</block>
-  <block id="d6eb1b65eb578d8eb99d367edc11bb03" category="list-text">Trident Protect는 실행 후크 설정과 일치하는 기준을 사용하여 스냅샷, 백업 또는 복구 작업에 적용할 수 있는 후크를 결정합니다.</block>
   <block id="6b988caf78b1aa60f0402c611a1c8e2a" category="admonition">실행 후크는 실행 중인 응용 프로그램의 기능을 줄이거나 완전히 비활성화하기 때문에 사용자 지정 실행 후크가 실행되는 시간을 최소화해야 합니다. 연결된 실행 후크와 함께 백업 또는 스냅샷 작업을 시작한 다음 취소하면 백업 또는 스냅샷 작업이 이미 시작된 경우에도 후크를 실행할 수 있습니다. 즉, 백업 후 실행 후크에 사용되는 논리는 백업이 완료된 것으로 가정할 수 없습니다.</block>
   <block id="99dc882fc0f61d1db87631ed9f156913" category="section-title">실행 후크 필터</block>
   <block id="44db75fbdb91be494665aebf40107fcf" category="paragraph">응용 프로그램의 실행 후크를 추가하거나 편집할 때 실행 후크에 필터를 추가하여 후크가 일치할 컨테이너를 관리할 수 있습니다. 필터는 모든 컨테이너에서 동일한 컨테이너 이미지를 사용하는 응용 프로그램에 유용하지만 각 이미지를 다른 용도(예: Elasticsearch)로 사용할 수 있습니다. 필터를 사용하면 실행 후크가 실행되는 시나리오를 만들 수 있습니다. 단, 모든 동일한 컨테이너를 실행하는 것은 아닙니다. 단일 실행 후크에 대해 여러 개의 필터를 만들면 논리적 필터 및 연산자와 결합됩니다. 실행 후크당 최대 10개의 활성 필터를 사용할 수 있습니다.</block>
   <block id="7caae75448dbc59fcadd621099e170b3" category="inline-link">정규식 2(RE2) 구문 지원</block>
-  <block id="c8390f7fcf8913e63d64e8069f87aa58" category="paragraph">실행 후크에 추가하는 각 필터는 클러스터의 컨테이너와 일치시키기 위해 정규식을 사용합니다. 후크가 컨테이너와 일치하면 후크는 해당 컨테이너에서 연결된 스크립트를 실행합니다. 필터에 대한 정규식은 정규식 2(RE2) 구문을 사용합니다. 이 구문은 일치 목록에서 컨테이너를 제외하는 필터를 만드는 것을 지원하지 않습니다. Trident Protect가 실행 후크 필터에서 정규식을 지원하는 구문에 대한 자세한 내용은 을 참조하십시오.<block ref="d4d0dd655d04b2dc5b031206e1febd50" category="inline-link-rx"></block></block>
   <block id="4c004df391027b81952b788a3802e37c" category="admonition">복원 또는 클론 작업 후에 실행되는 실행 후크에 네임스페이스 필터를 추가하고 복원 또는 클론 소스와 대상이 서로 다른 네임스페이스에 있는 경우 네임스페이스 필터는 대상 네임스페이스에만 적용됩니다.</block>
   <block id="f1ec6389b6d19d3be02f29f4a7d29051" category="section-title">실행 후크 예</block>
   <block id="0370124d48bfc5af2def19c48f433283" category="inline-link">NetApp Verda GitHub 프로젝트</block>
   <block id="a59e4fa5cc01a3a4bdebbff4cec60b47" category="paragraph">를 방문하여<block ref="84d9961ef5a89731849bc2055780d0b6" category="inline-link-rx"></block> Apache Cassandra 및 Elasticsearch와 같은 인기 앱의 실제 실행 후크를 다운로드하십시오. 예제를 보고 사용자 지정 실행 후크를 구조화하는 아이디어를 얻을 수도 있습니다.</block>
   <block id="b103709bb8bab06f6db02c661d88466a" category="section-title">실행 후크를 만듭니다</block>
   <block id="e39c63d5ded2742e4215d5e339fa729e" category="list-text">CR(사용자 정의 리소스) 파일을 만들고 이름을<block ref="ce6abb389eaae6953714e27f1dfde579" prefix=" " category="inline-code"></block>지정합니다.</block>
-  <block id="a1b64283bac1ca460b6b777a46121e7f" category="list-text">다음 특성을 Trident Protect 환경과 클러스터 구성과 일치하도록 구성합니다.</block>
   <block id="500ef917ae8cc36e9c85a2c0bc7d9337" category="list-text">* spec.applicationRef *:(_required_) 실행 후크를 실행할 응용 프로그램의 Kubernetes 이름입니다.</block>
   <block id="5422fe7ebd8e2354557341f5b0c60905" category="list-text">* spec.stage *: (_required_) 실행 후크가 실행되어야 하는 작업 중 단계를 나타내는 문자열입니다. 가능한 값:</block>
   <block id="fb55a965b77791b31ffd2bb548f71080" category="list-text">사전</block>
@@ -2015,11 +1910,8 @@
   <block id="011b50d44a6bb217bbe310071e727641" category="list-text">* spec.matchingCriteria.value *: (_Optional_) 실행 후크 필터 값을 식별하는 문자열 또는 정규식입니다.</block>
   <block id="5b34802949c91e91f2c85f8ee1c129bd" category="list-text">CR 파일을 올바른 값으로 채운 후 CR:</block>
   <block id="de72143da28c8cafc0b906859f6e6d05" category="list-text">괄호 안의 값을 사용자 환경의 정보로 대체하여 실행 후크를 만듭니다. 예를 들면 다음과 같습니다.</block>
-  <block id="d37692493f4055c8b34b9de2897bb1a6" category="summary">Trident Protect를 사용하면 NetApp SnapMirror 기술의 비동기식 복제 기능을 사용하여 동일한 클러스터 또는 서로 다른 클러스터 간에 데이터 및 애플리케이션 변경 사항을 스토리지 백엔드에서 다른 스토리지 백엔드로 복제할 수 있습니다.</block>
-  <block id="6f8f09e1a22390ac35a40283a4dc713f" category="doc">NetApp SnapMirror 및 Trident Protect를 사용하여 애플리케이션을 복제합니다</block>
   <block id="40322a2a338856f04751d8d3bdb62496" category="section-title">복제 관계를 설정합니다</block>
   <block id="f7c69ddccabddb0b74276d3c2a3086e0" category="paragraph">복제 관계를 설정하려면 다음을 수행해야 합니다.</block>
-  <block id="a7b38e98cd0b780e4d7f39ca030851fe" category="list-text">Trident Protect에서 앱 스냅샷 생성 빈도 선택(앱의 Kubernetes 리소스 및 각 앱 볼륨에 대한 볼륨 스냅샷 포함)</block>
   <block id="cc37bc9830a1edb8e50e296af8ade03b" category="list-text">복제 일정 선택(Kubernetes 리소스 및 영구 볼륨 데이터 포함)</block>
   <block id="55960a396448d8f19fb182dfd2b04d90" category="list-text">스냅샷을 생성할 시간을 설정합니다</block>
   <block id="7fe804bb721f10861ae38239b332f774" category="inline-link-macro">AppVault 사용자 지정 리소스</block>
@@ -2086,7 +1978,6 @@
   <block id="1d29e9d9da5d097b90cc18a976fa591c" category="list-text">AppMirrorRelationship 개체를 만들고 적용하여 대괄호 안의 값을 사용자 환경의 정보로 바꿉니다. 예를 들면 다음과 같습니다.</block>
   <block id="86d47ead9019d8e9c93c863f7ab4e41b" category="list-text">(_선택 사항_) 복제 관계의 상태 및 상태를 확인합니다.</block>
   <block id="70cc2bec279e168711b67e789468c45c" category="section-title">대상 클러스터로 페일오버합니다</block>
-  <block id="196c4df78e5add7c9590d6a1c18367ec" category="paragraph">Trident Protect를 사용하면 복제된 애플리케이션을 대상 클러스터로 페일오버할 수 있습니다. 이 절차는 복제 관계를 중지하고 대상 클러스터에서 앱을 온라인으로 전환합니다. Trident Protect는 소스 클러스터의 앱이 작동 중이었다면 중지하지 않습니다.</block>
   <block id="ffb2e8a8e2a97e36799531c053229941" category="list-text">AppMirrorRelationship CR 파일(예<block ref="e4fba3915616865173fe7feee130a30f" prefix=" " category="inline-code"></block>:)을 열고 * spec.desiredState* 값을 로 변경합니다<block ref="2c42d7d277f63fcbe64b041b997ceaed" prefix=" " category="inline-code"></block>.</block>
   <block id="2d258c624d61d2388efacfc246d2439e" category="list-text">CR 파일을 저장합니다.</block>
   <block id="66ccf267a388b1a30a7530a93ea5ce18" category="list-text">(_선택 사항_) 페일오버된 애플리케이션에 필요한 보호 스케줄을 생성합니다.</block>
@@ -2104,7 +1995,6 @@
   <block id="e4d13c88dbb2196550655288d4cf351a" category="list-text">AppVault CRS가 각 클러스터에 준비되어 있는지 확인합니다.</block>
   <block id="8a427fa57d96e74516c008754320b521" category="list-text">반대 클러스터에서 복제 관계를 설정하여 반대 방향에 대한 값을 구성합니다.</block>
   <block id="792322eb4a0bf1a122100fc009041d9b" category="section-title">애플리케이션 복제 방향을 반대로 전환합니다</block>
-  <block id="eb89cf8a1850f41e41a65f7b65ec9c87" category="paragraph">복제 방향을 반대로 바꾸면 Trident Protect는 애플리케이션을 대상 스토리지 백엔드로 이동하고 계속해서 원래 소스 스토리지 백엔드로 복제합니다. Trident Protect는 소스 애플리케이션을 중지하고 타겟 앱으로 페일오버하기 전에 데이터를 대상에 복제합니다.</block>
   <block id="4625c1e6ccf2351ad9a08dcee33270c8" category="paragraph">이 경우 소스와 대상을 스와핑합니다.</block>
   <block id="06275f61faab68bc1c01a07a41aadfed" category="list-text">종료 스냅샷 생성:</block>
   <block id="4f902591d45de06985f0af6d869c8a04" category="open-title">CR을 사용하여 종료 스냅샷을 생성합니다</block>
@@ -2130,7 +2020,6 @@
   <block id="b6c3873d17157e3e4a0b1ef02b3cef69" category="list-text">앱의 Kubernetes 리소스는 원래 소스 애플리케이션이 종료된 후 복제된 볼륨 데이터를 사용하여 사전 종료 스냅샷에서 복구됩니다.</block>
   <block id="3cecdf93ba8c40eb3b09b7a7f9985e1d" category="list-text">복제는 반대 방향으로 다시 설정됩니다.</block>
   <block id="827d6f4840be3ba668aa3eaee7c11d8d" category="section-title">애플리케이션을 원래 소스 클러스터로 페일백합니다</block>
-  <block id="fbe6471033a142db5e3165e4034c1157" category="paragraph">Trident Protect를 사용하면 다음 작업 순서를 사용하여 페일오버 작업 후에 "페일백"을 수행할 수 있습니다. 이 워크플로우에서 원래 복제 방향을 복구하면 Trident Protect는 복제 방향을 바꾸기 전에 애플리케이션 변경 내용을 원래 소스 애플리케이션으로 다시 복제(재동기화)합니다.</block>
   <block id="3a045f0ae84563b460627f43bb272936" category="paragraph">이 프로세스는 대상에 대한 페일오버를 완료한 관계로부터 시작되며 다음 단계를 포함합니다.</block>
   <block id="9cbd7771b861e31b5edb23d83de4758c" category="list-text">페일오버된 상태로 시작합니다.</block>
   <block id="fe411ea35c29677771dcaad52985fc08" category="list-text">복제 관계를 역방향으로 다시 동기화합니다.</block>
@@ -5134,8 +5023,6 @@
   <block id="386307d41b3f4169a1e6e046a727cdd2" category="sidebar">Trident 연산자를 사용하여 업그레이드합니다</block>
   <block id="c2be0dce836d12b399a864c7019c6c72" category="sidebar">Trident를 사용합니다</block>
   <block id="a2d3ef10e2d8aae09270e11f8faea2d2" category="sidebar">고급 데이터 관리 및 보호 기능을 제공합니다</block>
-  <block id="6274fe9ce01bdde4e27e80b7958fb714" category="sidebar">Trident 보호를 통한 고급 데이터 보호</block>
-  <block id="1251ea693b8f0b6da19ce6991115faa0" category="sidebar">Trident Protect를 구축합니다</block>
   <block id="81a123ccab93cd947289b672b0e50348" category="sidebar">데모 및 자습서</block>
   <block id="c2cad626583e84ad7681ff1f879baed0" category="sidebar">Trident 비디오</block>
   <block id="813011e2103649bb71f124adedcc10ea" category="sidebar">블로그 및 커뮤니티</block>
@@ -5157,8 +5044,6 @@
   <block id="c95d3f2a880ad1b81926c3a78c2294ed" category="sidebar">Trident 관리 및 모니터링</block>
   <block id="71f5771dab663d80ba4dad1627e3386a" category="sidebar">업그레이드 개요</block>
   <block id="5ff3faebb0ff710340bdbee89a4667ad" category="sidebar">운영자와 함께 업그레이드하십시오</block>
-  <block id="6c3cb2816fa53d1d99c44a111d9f7206" category="sidebar">Trident Protect로 애플리케이션을 보호합니다</block>
-  <block id="f284d92e4bd22a3c7a76bfe530ddd899" category="sidebar">Trident Protect를 관리합니다</block>
   <block id="3f94255d3ae6517615821f8939ba6230" category="sidebar">권한 부여 및 액세스 제어 관리</block>
   <block id="1ae067a03c56065918252f36c73024d1" category="sidebar">애플리케이션을 관리하고 보호합니다</block>
   <block id="618ce5e44021c1c57c9655e5e3846eda" category="sidebar">AppVault 객체를 사용하여 버킷을 관리합니다</block>
@@ -5167,7 +5052,6 @@
   <block id="ff29014f3961a30f52557df7142d1a65" category="sidebar">응용 프로그램을 복원합니다</block>
   <block id="73ff2f0e4c750901167edccad459407d" category="sidebar">NetApp SnapMirror를 사용하여 애플리케이션 복제</block>
   <block id="5d23a9c0c55a80ece74daa65c04f1d66" category="sidebar">애플리케이션을 마이그레이션합니다</block>
-  <block id="793ba052e921b84a44dd053d68f45012" category="sidebar">Trident Protect로 실행 후크를 관리합니다</block>
   <block id="a20f982d79c3dd66d244ffe0f7d940ee" category="sidebar">모범 사례 및 권장사항</block>
   <block id="4182ceafe6e7afa67be49e639a8fa3a9" category="sidebar">Trident 통합</block>
   <block id="301ebdf8067a213d5a55c65fbb488290" category="sidebar">보안 권장 사항</block>
@@ -5198,4 +5082,122 @@
   <block id="3f5328bb19aa79d467d968b28c852d9d" category="paragraph">강제 분리가 가능합니다.<block ref="73a3350a1b91aeb6e2836fdf5975672c" prefix=" " category="inline-code"></block> ,<block ref="3016c12c1db45f14c80c9c1731b9c26a" prefix=" " category="inline-code"></block> 그리고<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block> 오직.  강제 분리를 활성화하기 전에 Kubernetes 클러스터에서 비정상적 노드 종료(NGNS)를 활성화해야 합니다. 자세한 내용은 다음을 참조하세요. <block ref="1da18b4f36c698c06b8a402542c42858" category="inline-link-macro-rx"></block> .</block>
   <block id="ef2305a5dae85359e321280954448fc1" category="paragraph">생성하다<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> 사용자 정의 리소스 정의(CRD).  당신은 만들 것입니다<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> 나중에 사용자 정의 리소스.  적절한 CRD YAML 버전을 사용하세요.<block ref="91ff3926f7c7983bb4a56689f631e6c9" prefix=" " category="inline-code"></block> 생성하기 위해<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> CRD(크레디)</block>
   <block id="aa0e836064863803207869138b817ebb" category="paragraph">생성하다<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> 사용자 정의 리소스 정의(CRD). 당신은 만들 것입니다<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> 나중에 사용자 정의 리소스. 적절한 CRD YAML 버전을 사용하세요.<block ref="91ff3926f7c7983bb4a56689f631e6c9" prefix=" " category="inline-code"></block> 생성하기 위해<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> CRD:</block>
+  <block id="deca7f5d5c734fc5db3590b2dbe431b8" category="paragraph">Trident Protect 24.10 및 24.10.1 이상 버전은 KubeVirt VM에서 실행되는 애플리케이션을 보호할 때 동작이 다릅니다. 두 버전 모두 데이터 보호 작업 중에 파일 시스템 동결 및 동결 해제를 활성화하거나 비활성화할 수 있습니다.</block>
+  <block id="24f46477c3028f2e7408150377e16f98" category="paragraph">모든 Trident Protect 버전의 경우 OpenShift 환경에서 자동 동결 기능을 활성화하거나 비활성화하려면 애플리케이션 네임스페이스에 특권 권한을 부여해야 할 수 있습니다. 예를 들어:</block>
+  <block id="ea7f18044a9efb2ea47bdd370e5870f3" category="paragraph-title">Trident 프로텍트 24.10</block>
+  <block id="98d3ce5c789124fc9207b48d4d1e8fc7" category="paragraph">Trident Protect 24.10은 데이터 보호 작업 중에 KubeVirt VM 파일 시스템의 일관된 상태를 자동으로 보장하지 않습니다. Trident Protect 24.10을 사용하여 KubeVirt VM 데이터를 보호하려면 데이터 보호 작업을 시작하기 전에 파일 시스템의 동결/동결 해제 기능을 수동으로 활성화해야 합니다. 이렇게 하면 파일 시스템이 일관된 상태를 유지하게 됩니다.</block>
+  <block id="5ea5c247812e1dca5ff02ca853f05032" category="paragraph">데이터 보호 작업 중 VM 파일 시스템의 동결 및 동결 해제를 관리하도록 Trident Protect 24.10을 구성할 수 있습니다.<block ref="e0dd4c4b8aa16596df6c3f5cb36d3cdc" category="inline-link-macro-rx"></block> 그리고 다음 명령을 사용합니다.</block>
+  <block id="d9add54d9d6181f1b39ad4d1bc6451d0" category="paragraph-title">Trident Protect 24.10.1 이상</block>
+  <block id="fc0a8846b51e68aef267b5f9ab2a081d" category="paragraph">Trident Protect 24.10.1부터 Trident Protect는 데이터 보호 작업 중에 KubeVirt 파일 시스템을 자동으로 동결 및 동결 해제합니다. 선택적으로 다음 명령을 사용하여 이 자동 동작을 비활성화할 수 있습니다.</block>
+  <block id="d65eac563b898cb7e41b8853a4fe1a3c" category="paragraph">Helm을 사용하여 소스 애플리케이션을 설치한 경우<block ref="cc1f5c1d16e33b8463c9ee27295cd5df" prefix=" " category="inline-code"></block> 깃발에는 특별한 대우가 주어집니다.<block ref="b068931cc450442b63f5b3d276ea4297" prefix=" " category="inline-code"></block> 라벨 키. 복구 또는 장애 조치 프로세스 중에 Trident Protect는 이 레이블을 대상 네임스페이스에 복사하지만 소스의 값이 소스 네임스페이스와 일치하는 경우 값을 대상 네임스페이스 값으로 업데이트합니다. 이 값이 소스 네임스페이스와 일치하지 않으면 변경 사항 없이 대상 네임스페이스에 복사됩니다.</block>
+  <block id="186ed0696d9f28961b696fce39a1ab04" category="summary">Trident Protect를 사용하면 Trident 사용하여 애플리케이션과 애플리케이션 데이터를 보호할 수 있습니다.</block>
+  <block id="a1fc1c89153021eb03a34941e90a9ac8" category="doc">Trident Protect에 대해 알아보세요</block>
+  <block id="8e5dd4e5adac56cea1dc2d33ce1fb16d" category="paragraph">NetApp Trident Protect는 NetApp ONTAP 스토리지 시스템과 NetApp Trident CSI 스토리지 프로비저너가 지원하는 상태 저장 Kubernetes 애플리케이션의 기능과 가용성을 향상시키는 고급 애플리케이션 데이터 관리 기능을 제공합니다. Trident Protect는 퍼블릭 클라우드와 온프레미스 환경에서 컨테이너화된 워크로드의 관리, 보호 및 이동을 간소화합니다. 또한 API와 CLI를 통해 자동화 기능도 제공합니다.</block>
+  <block id="f8c19139074cb59a75b44d606c717f8c" category="paragraph">Trident Protect를 사용하면 사용자 정의 리소스(CR)를 생성하거나 Trident Protect CLI를 사용하여 애플리케이션을 보호할 수 있습니다.</block>
+  <block id="f75cefaa6253f6baec3b37a877190d58" category="paragraph">Trident Protect를 설치하기 전에 요구 사항에 대해 알아볼 수 있습니다.</block>
+  <block id="a36c33156a01492f882621b3d9439e19" category="inline-link-macro">Trident 프로텍트 요구 사항</block>
+  <block id="e729e17d911612e1e8443312aeca41bc" category="list-text"><block ref="e729e17d911612e1e8443312aeca41bc" category="inline-link-macro-rx"></block></block>
+  <block id="9576ee16383bba42a76a1c5c4fba3610" category="summary">Trident Protect는 역할 기반 액세스 제어(RBAC)의 Kubernetes 모델을 사용합니다. Trident Protect RBAC 기능을 사용하면 리소스에 대한 액세스를 보다 세밀하게 제어할 수 있습니다.</block>
+  <block id="ed335c13bb78e208d86e5f041a062d77" category="doc">Trident Protect 권한 및 액세스 제어 관리</block>
+  <block id="53f246f5b6c5c9527af81e004a5465cb" category="paragraph">Trident Protect는 역할 기반 액세스 제어(RBAC)의 Kubernetes 모델을 사용합니다. 기본적으로 Trident Protect는 단일 시스템 네임스페이스와 연관된 기본 서비스 계정을 제공합니다. 사용자 수가 많거나 특정 보안 요구 사항이 있는 조직인 경우 Trident Protect의 RBAC 기능을 사용하여 리소스와 네임스페이스에 대한 액세스를 보다 세부적으로 제어할 수 있습니다.</block>
+  <block id="35f04ac444c4730f0b010b0b00905ab3" category="paragraph">다음을 포함하는 권한이 있는 Trident Protect 사용자 정의 리소스 개체에 대한 액세스 권한은 관리자에게만 부여됩니다.</block>
+  <block id="1ebe16955ececaae67d3cf58803335d2" category="list-text">*AutoSupportBundle*: 메트릭, 로그 및 기타 중요한 Trident Protect 데이터를 수집합니다.</block>
+  <block id="f5b0d8e5ea0bcbbfdb4c2b59f377ab84" category="paragraph">Trident Protect를 설치하면 기본 ClusterRole 개체가 생성됩니다. RoleBinding 객체를 생성하고 적용하여 이 ClusterRole을 서비스 계정에 바인딩할 수 있습니다.</block>
+  <block id="bc13327772f75ed0280d75f548627918" category="summary">Trident Protect의 버킷 사용자 정의 리소스(CR)는 AppVault로 알려져 있습니다. AppVaults는 스토리지 버킷의 선언적 Kubernetes 워크플로 표현입니다.</block>
+  <block id="36232457f4c28ae76f2c98b665ead40c" category="doc">Trident Protect AppVault 객체를 사용하여 버킷을 관리합니다.</block>
+  <block id="32b7058b3107bb8f17c6bba2e35a930c" category="paragraph">Trident Protect의 버킷 사용자 정의 리소스(CR)는 AppVault로 알려져 있습니다. AppVault 객체는 스토리지 버킷의 선언적 Kubernetes 워크플로 표현입니다. AppVault CR에는 백업, 스냅샷, 복원 작업, SnapMirror 복제와 같은 보호 작업에 버킷을 사용하는 데 필요한 구성이 포함되어 있습니다. 관리자만 AppVault를 만들 수 있습니다.</block>
+  <block id="53c26e1b5abeebc0a5a45f5e687bfe0f" category="section-title">Trident Protect CLI를 사용한 AppVault 생성 예</block>
+  <block id="42832a779d341cac08da459dc58890f9" category="paragraph">Trident Protect CLI 플러그인을 사용하면 클러스터에서 생성된 AppVault 개체에 대한 정보를 볼 수 있습니다.</block>
+  <block id="f34b73c5ce560d484c593f257864bcd3" category="paragraph">표의 첫 번째 열에 있는 클러스터 이름은 Trident Protect helm 설치 시 클러스터 이름이 지정된 경우에만 사용할 수 있습니다. 예를 들어:<block ref="b84d46473a6782105f40ea4fa2bc2964" prefix=" " category="inline-code"></block> .</block>
+  <block id="77123d25e78bd4b317b645c0cff492ef" category="open-title">Trident Protect CLI를 사용하여 AppVault 제거</block>
+  <block id="3ad8f6db77e9b2740fd2b74265655e2b" category="summary">protectctl 명령을 사용하면 Trident Protect 사용자 정의 리소스를 만들고 상호 작용할 수 있습니다.</block>
+  <block id="66296c0c4ab3568f7a50dfabb1fc57f9" category="doc">Trident Protect CLI 플러그인을 설치하세요</block>
+  <block id="8c5e021776b8d89478d1d4645a6666ea" category="paragraph">Trident Protect 명령줄 플러그인을 사용할 수 있습니다. 이 플러그인은 Trident 의 확장 기능입니다.<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block> Trident Protect 사용자 정의 리소스(CR)를 생성하고 상호 작용할 수 있는 유틸리티입니다.</block>
+  <block id="484622e8e21f4638a10f4d7275c68e17" category="list-text">Trident Protect CLI 플러그인을 다운로드하세요:</block>
+  <block id="10bb2ae2f693aa79b853c34cee633de3" category="paragraph">Trident Protect CLI 플러그인을 설치한 후 특정 명령에 대한 자동 완성을 활성화할 수 있습니다.</block>
+  <block id="8f02039b35e4022a5708ae80cf91e165" category="summary">Trident Protect를 사용하면 관리자는 관리 중인 클러스터와 앱에 대한 로그, 메트릭, 토폴로지 정보 등 NetApp 지원에 유용한 정보가 포함된 번들을 생성할 수 있습니다. 인터넷에 연결되어 있는 경우 사용자 정의 리소스(CR) 파일을 사용하여 NetApp 지원 사이트(NSS)에 지원 번들을 업로드할 수 있습니다.</block>
+  <block id="d50e081382e6d63e2af634e643be98d8" category="doc">Trident Protect 지원 번들 생성</block>
+  <block id="c2429ddfa24a45055e7502efac364217" category="summary">사용자 환경이 요구 사항을 충족하는 경우 다음 단계에 따라 Trident Protect를 설치할 수 있습니다.</block>
+  <block id="845b43fa08ae2a42cfeb159e5fc1366c" category="doc">Trident Protect 설치 및 구성</block>
+  <block id="bb50add256acfe3f6c958f2b4e018fce" category="paragraph">사용자 환경이 Trident Protect에 대한 요구 사항을 충족하는 경우 다음 단계에 따라 클러스터에 Trident Protect를 설치할 수 있습니다. NetApp 에서 Trident Protect를 구입하거나 개인 레지스트리에서 설치할 수 있습니다. 클러스터가 인터넷에 액세스할 수 없는 경우 개인 레지스트리에서 설치하는 것이 도움이 됩니다.</block>
+  <block id="f63d76ddf07c337c0b8d3f8d8a12c266" category="admonition">기본적으로 Trident Protect는 클러스터 및 관리형 애플리케이션에 대한 로그, 메트릭, 토폴로지 정보를 포함하여 사용자가 열 수 있는 모든 NetApp 지원 사례에 도움이 되는 지원 정보를 수집합니다. Trident Protect는 이러한 지원 번들을 매일 NetApp 에 ​​보냅니다. Trident Protect를 설치할 때 선택적으로 이 지원 번들 컬렉션을 비활성화할 수 있습니다. 수동으로 할 수 있습니다<block ref="dedfc5877c343d6cbe77701c7edd9bde" category="inline-link-macro-rx"></block> 언제든지.</block>
+  <block id="9a660681c53f773fd48d7ad58cd48d53" category="section-title">Trident Protect 설치</block>
+  <block id="e0efc186d85cb700edf5d19dd5bc9496" category="open-title">NetApp 에서 Trident Protect 설치</block>
+  <block id="93459820f19a8251d29e060f09ece7bf" category="list-text">다음 명령 중 하나를 사용하여 Helm을 사용하여 Trident Protect를 설치합니다. 바꾸다<block ref="b90b2ffedb63ca3bd8795caf4397715e" prefix=" " category="inline-code"></block> 클러스터에 할당되고 클러스터의 백업과 스냅샷을 식별하는 데 사용되는 클러스터 이름이 포함됩니다.</block>
+  <block id="eb462dda0e96614f18b56ebeffd4f4c3" category="list-text">Trident Protect를 정상적으로 설치하세요:</block>
+  <block id="62d9a4720463384e2dba920f37795e8b" category="list-text">Trident Protect를 설치하고 예약된 일일 Trident Protect AutoSupport 지원 번들 업로드를 비활성화하세요.</block>
+  <block id="272a3e0fc5f097dfcb8f549a6577a5f6" category="open-title">개인 레지스트리에서 Trident Protect 설치</block>
+  <block id="357de3657314f9b2b3abd151f9d483ee" category="paragraph">Kubernetes 클러스터가 인터넷에 액세스할 수 없는 경우 개인 이미지 레지스트리에서 Trident Protect를 설치할 수 있습니다. 다음 예에서 괄호 안의 값을 사용자 환경의 정보로 바꾸세요.</block>
+  <block id="8bb72cea6536be6ef0764dfc1d24b096" category="list-text">Trident Protect 시스템 네임스페이스를 만듭니다.</block>
+  <block id="35931b526a6c0c04f0b248e331cfa12f" category="list-text">라는 이름의 파일을 만듭니다.<block ref="5744e710490761bdd5b4603b9b0487a7" prefix=" " category="inline-code"></block> . 다음 Trident Protect 설정이 포함되어 있는지 확인하세요.</block>
+  <block id="a26e61e4004dac403b6f3fd440e601f7" category="list-text">Trident Protect CRD를 설치하세요:</block>
+  <block id="4e0399066f793ec1568f491f3ea11a12" category="list-text">Trident Protect를 설치하고 예약된 일일 Trident Protect AutoSupport 지원 번들 업로드를 비활성화하세요.</block>
+  <block id="10475501fb85172a1ecd467e858af547" category="section-title">Trident Protect 컨테이너 리소스 제한 지정</block>
+  <block id="ee382d151f8b137775f9a254da6b324a" category="paragraph">Trident Protect를 설치한 후에는 구성 파일을 사용하여 Trident Protect 컨테이너에 대한 리소스 제한을 지정할 수 있습니다. 리소스 제한을 설정하면 Trident Protect 작업에서 클러스터 리소스가 얼마나 소모되는지 제어할 수 있습니다.</block>
+  <block id="355fc5f48551b9e07ed405860fbb4dd9" category="list-text">사용자 환경의 요구 사항에 따라 Trident Protect 컨테이너에 대한 리소스 제한 옵션으로 파일을 채웁니다.</block>
+  <block id="859907c8f7f3b8fee4686d91f3ff3a95" category="summary">관리하려는 애플리케이션을 Trident Protect에 알리려면 애플리케이션 CR과 관련 AppVault CR을 생성하세요.</block>
+  <block id="bb6a1031786570f5efbd120022930c4d" category="doc">Trident Protect를 사용하여 관리를 위한 애플리케이션 정의</block>
+  <block id="dd9087d2ada9f483d5993ca38f424ddd" category="paragraph">Trident Protect로 관리하려는 애플리케이션을 정의하려면 애플리케이션 CR과 관련 AppVault CR을 생성하면 됩니다.</block>
+  <block id="6b351bf9a90179c1bf4dfb635cae7f8b" category="paragraph">애플리케이션에서 데이터 보호 작업을 수행할 때 사용할 AppVault CR을 만들어야 하며, AppVault CR은 Trident Protect가 설치된 클러스터에 있어야 합니다. AppVault CR은 사용자 환경에 따라 다릅니다. AppVault CR의 예는 다음을 참조하세요.<block ref="7e7838343a821a01b97d2b866c568a54" category="inline-link-macro-rx"></block></block>
+  <block id="3127b137b318ecdc790653543934571a" category="paragraph">Trident Protect로 관리하려는 각 애플리케이션을 정의해야 합니다. 수동으로 애플리케이션 CR을 생성하거나 Trident Protect CLI를 사용하여 관리할 애플리케이션을 정의할 수 있습니다.</block>
+  <block id="02d146964c2600f14f867b6e899ac16c" category="doc">Trident Protect를 사용하여 애플리케이션 마이그레이션</block>
+  <block id="7cd0f85b8ff8c4b060bfcc24f7beb69a" category="paragraph">다른 클러스터에 애플리케이션을 복제하려면(클러스터 간 복제 수행) 소스 클러스터에 백업을 만든 다음, 해당 백업을 다른 클러스터로 복원합니다. 대상 클러스터에 Trident Protect가 설치되어 있는지 확인하세요.</block>
+  <block id="3e08b68951a9cc47f14998b092350bbb" category="doc">Trident Protect를 사용하여 애플리케이션 보호</block>
+  <block id="d075d7bb863ffe0aa757603d564ca090" category="paragraph">자동화된 보호 정책이나 임시 기반으로 스냅샷과 백업을 수행하여 Trident Protect가 관리하는 모든 앱을 보호할 수 있습니다.</block>
+  <block id="b69d0d4c17b9b5532a7bf67b14c342c2" category="inline-link-macro">Trident Protect를 사용하여 파일 시스템 동결을 구성하는 방법에 대해 자세히 알아보세요.</block>
+  <block id="7927b4fc176662e1023887f00f7cc92f" category="admonition">데이터 보호 작업 중에 파일 시스템을 동결 및 동결 해제하도록 Trident Protect를 구성할 수 있습니다. <block ref="e019680d5fc80a6a772db1153dfe4d66" category="inline-link-macro-rx"></block>.</block>
+  <block id="f93e5c10e8a9e3890ef855e7e7b53b42" category="paragraph">Trident Protect를 설치한 경우 azure-netapp-files 스토리지 클래스를 사용하고 Trident 24.06 이전에 생성된 스토리지 백엔드에 대해 공간 효율적인 백업 및 복원 기능을 활성화할 수 있습니다. 이 기능은 NFSv4 볼륨에서 작동하며 용량 풀에서 추가 공간을 소모하지 않습니다.</block>
+  <block id="7f9574de510184fa4984256b9bd52f9e" category="list-text">Trident Protect를 설치했습니다.</block>
+  <block id="5c988e5008390b9a3e9eec9ccb6b7275" category="list-text">Trident Protect에서 애플리케이션을 정의했습니다. 이 절차를 완료하기 전까지 이 애플리케이션의 보호 기능은 제한됩니다.</block>
+  <block id="76d8d1a8d95bf0c8521b80cdf7becbf6" category="paragraph">스냅샷 디렉토리가 활성화되지 않은 경우 Trident Protect는 정기적인 백업 기능을 선택합니다. 이 기능은 백업 프로세스 중에 용량 풀의 공간을 일시적으로 사용합니다. 이 경우 백업되는 볼륨 크기의 임시 볼륨을 생성할 수 있는 충분한 공간이 용량 풀에 있는지 확인하세요.</block>
+  <block id="fc53c460fa3679942307a868cb86ce5f" category="paragraph">Trident Protect를 사용하여 애플리케이션을 백업하고 복원할 준비가 되었습니다. 각 PVC는 다른 애플리케이션에서 백업 및 복원을 위해 사용할 수도 있습니다.</block>
+  <block id="c792e8472de999b9df658a1202580532" category="summary">운영 환경, 애플리케이션 클러스터, 애플리케이션 및 라이선스의 준비 상태를 확인하여 시작하세요. Trident Protect를 배포하고 운영하려면 환경이 이러한 요구 사항을 충족하는지 확인하세요.</block>
+  <block id="dad76a1d38d59b472a3143f23d633d9b" category="section-title">Trident Protect Kubernetes 클러스터 호환성</block>
+  <block id="fd3bd2fcfeedfca19073cae4b15b6d58" category="paragraph">Trident Protect는 다음을 포함한 광범위한 완전 관리형 및 자체 관리형 Kubernetes 제품과 호환됩니다.</block>
+  <block id="9ac14e26b678482e730c473a2182b3cd" category="admonition">Trident Protect를 설치하는 클러스터가 실행 중인 스냅샷 컨트롤러와 관련 CRD로 구성되어 있는지 확인하세요. 스냅샷 컨트롤러를 설치하려면 다음을 참조하세요.<block ref="5d66944a2971d1b9b5f332812a6e737b" category="inline-link-rx"></block> .</block>
+  <block id="d1aeab176ad80dc54e61f7c70cd3ae3b" category="section-title">Trident Protect 스토리지 백엔드 호환성</block>
+  <block id="5599f02aecfd2b4e31e0c79404170afe" category="paragraph">Trident Protect는 다음과 같은 스토리지 백엔드를 지원합니다.</block>
+  <block id="e8cdc937e4fea4b9dbba5e00d7662548" category="list-text">애플리케이션이나 애플리케이션 데이터 관리 작업에 사용할 애플리케이션 네임스페이스를 만듭니다. Trident Protect는 이러한 네임스페이스를 자동으로 생성하지 않습니다. 사용자 정의 리소스에 존재하지 않는 네임스페이스를 지정하면 작업이 실패합니다.</block>
+  <block id="1045d62a7b99460399e0346f2ae30b23" category="paragraph">Trident Protect는 NAS 경제형 볼륨에 대한 백업 및 복원 작업을 지원합니다. 현재 NAS 경제 볼륨에 대한 스냅샷, 복제 및 SnapMirror 복제는 지원되지 않습니다. Trident Protect와 함께 사용하려는 각 NAS-Economy 볼륨에 대해 스냅샷 디렉토리를 활성화해야 합니다.</block>
+  <block id="06bfad4946d0d5697c235fa5a789a106" category="paragraph">NetApp SnapMirror 는 다음 ONTAP 솔루션의 Trident Protect와 함께 사용할 수 있습니다.</block>
+  <block id="4f0534da8912092a44c5096586cd4e69" category="list-text">* Astra Control Provisioner 또는 Trident*: Astra Control Provisioner 또는 Trident ONTAP 백엔드로 활용하는 소스 및 대상 Kubernetes 클러스터 모두에 존재해야 합니다. Trident Protect는 다음 드라이버로 지원되는 스토리지 클래스를 사용하여 NetApp SnapMirror 기술을 통한 복제를 지원합니다.</block>
+  <block id="fd061cf50a47c913ada57ca992823154" category="list-text">*관리형 백엔드*: 복제 관계를 생성하려면 Trident Protect에서 ONTAP 스토리지 백엔드를 추가하고 관리해야 합니다.</block>
+  <block id="5861c4fff242146ce57e45a2a8c599f4" category="list-text">*TCP를 통한 NVMe*: Trident Protect는 TCP 프로토콜을 통한 NVMe를 사용하는 스토리지 백엔드에 대한 NetApp SnapMirror 복제를 지원하지 않습니다.</block>
+  <block id="ee9dbfe472a4404175c214c5bc3503d6" category="paragraph">Trident Protect를 사용하려면 소스 및 대상 클러스터 모두에 대한 복제를 지원하는 하나 이상의 스토리지 백엔드를 구성해야 합니다. 소스 및 대상 클러스터가 동일한 경우, 최상의 복원력을 위해 대상 애플리케이션은 소스 애플리케이션과 다른 스토리지 백엔드를 사용해야 합니다.</block>
+  <block id="e91e1786215e817bc20eba0859e44992" category="summary">Trident Protect를 사용하면 스냅샷이나 백업에서 애플리케이션을 복원할 수 있습니다. 동일한 클러스터로 애플리케이션을 복원할 때 기존 스냅샷에서 복원하는 것이 더 빠릅니다.</block>
+  <block id="2f17c2ec082854ce1f49ed1f47122369" category="doc">Trident Protect를 사용하여 애플리케이션 복원</block>
+  <block id="1c6eace91e0dc01cf9008fefb2dab254" category="paragraph">BackupRestore CR을 사용하여 다른 네임스페이스로 백업을 복원하면 Trident Protect는 새 네임스페이스에서 애플리케이션을 복원하고 복원된 애플리케이션에 대한 애플리케이션 CR을 만듭니다. 복구된 애플리케이션을 보호하려면 주문형 백업이나 스냅샷을 만들거나 보호 일정을 설정하세요.</block>
+  <block id="e23fef665fca7137c4d6ee6b9a9ec06a" category="list-text">대상 클러스터에 Trident Protect가 설치되어 있습니다.</block>
+  <block id="cfb3749b52f4ce0c21dcdc3a9fce80f2" category="list-text">Trident Protect CLI 플러그인을 사용하여 대상 클러스터에서 AppVault CR의 가용성을 확인하세요.</block>
+  <block id="00a11b317e9c8f9d94e106859445f95b" category="paragraph">사용자 정의 리소스(CR) 파일을 사용하여 스냅샷에서 데이터를 다른 네임스페이스나 원래 소스 네임스페이스로 복원할 수 있습니다. SnapshotRestore CR을 사용하여 다른 네임스페이스로 스냅샷을 복원하면 Trident Protect는 새 네임스페이스에서 애플리케이션을 복원하고 복원된 애플리케이션에 대한 애플리케이션 CR을 만듭니다. 복구된 애플리케이션을 보호하려면 주문형 백업이나 스냅샷을 만들거나 보호 일정을 설정하세요.</block>
+  <block id="b3cc398bcb7f536fcb9416eb16f4fff6" category="summary">평가판에서 정식 버전으로 업그레이드하는 경우 Trident Protect 구성 요소를 제거해야 할 수도 있습니다.</block>
+  <block id="dd28e2f5a84c48ae81ab3d88858e28ee" category="doc">Trident Protect 제거</block>
+  <block id="cb38bfec92928c82db030cfdce9bccdf" category="paragraph">Trident Protect를 제거하려면 다음 단계를 수행하세요.</block>
+  <block id="2e5c0707a785908014e16ab0cbf18366" category="list-text">Trident Protect CR 파일을 제거합니다.</block>
+  <block id="776420d2a523398306e23e8ddde41835" category="list-text">Trident Protect 제거:</block>
+  <block id="4ddbb510a6a83f944b61747e65e231af" category="list-text">Trident Protect 네임스페이스를 제거합니다.</block>
+  <block id="cde61ef6aff0f74c93f975b94c538c81" category="summary">Trident Protect를 최신 버전으로 업그레이드하면 새로운 기능이나 버그 수정을 활용할 수 있습니다.</block>
+  <block id="516ee22feede3bac94e552d7d7d47c7a" category="doc">Trident 프로텍트 업그레이드</block>
+  <block id="af256125ca711d0e16dc4c173930116f" category="paragraph">Trident Protect를 업그레이드하려면 다음 단계를 수행하세요.</block>
+  <block id="578bfdcecd0a48c1dad189ec9d70204a" category="list-text">Trident Protect CRD 업그레이드:</block>
+  <block id="e9234397b7137bc49ace1f1229a5a982" category="list-text">Trident 프로텍트 업그레이드:</block>
+  <block id="6f8a1c340d72b735b7cd3b6957d814e3" category="summary">Trident Protect를 사용하여 앱에 대한 사용자 정의 실행 후크를 만들 수 있습니다. 실행 후크를 생성하려면 소유자, 관리자 또는 멤버 권한이 필요합니다.</block>
+  <block id="c8032c002085d9b42031ec80a534e894" category="doc">Trident Protect 실행 후크 관리</block>
+  <block id="ba45cbc00acdb40a749e6b9a5bf95eff" category="paragraph">Trident Protect는 실행 가능 시기에 따라 다음 유형의 실행 후크를 지원합니다.</block>
+  <block id="019c0400e3d10bda84f61aadf4d88474" category="list-text">해당되는 경우 파일 시스템이 정지됩니다. <block ref="e019680d5fc80a6a772db1153dfe4d66" category="inline-link-macro-rx"></block>.</block>
+  <block id="1f3ffd6698226c67c537c364eaf041be" category="list-text">Trident Protect에서는 실행 후크가 사용하는 스크립트가 실행 가능한 셸 스크립트 형식으로 작성되어야 합니다.</block>
+  <block id="5f751924fb5492c94aa54485264a30e9" category="list-text">Trident Protect는 실행 후크 설정과 일치 기준을 사용하여 스냅샷, 백업 또는 복원 작업에 적용할 수 있는 후크를 결정합니다.</block>
+  <block id="d46485186a1153a2fbf335ff2db190f4" category="paragraph">실행 후크에 추가하는 각 필터는 정규 표현식을 사용하여 클러스터의 컨테이너와 일치시킵니다. 후크가 컨테이너와 일치하면 후크는 해당 컨테이너에서 연관된 스크립트를 실행합니다. 필터에 대한 정규 표현식은 RE2(Regular Expression 2) 구문을 사용하는데, 이 구문은 일치 항목 목록에서 컨테이너를 제외하는 필터를 만드는 것을 지원하지 않습니다. Trident Protect가 실행 후크 필터의 정규 표현식에 대해 지원하는 구문에 대한 정보는 다음을 참조하세요.<block ref="d4d0dd655d04b2dc5b031206e1febd50" category="inline-link-rx"></block> .</block>
+  <block id="d7fe96269d51ee2db54db3f582053bbc" category="list-text">Trident Protect 환경 및 클러스터 구성에 맞게 다음 속성을 구성하세요.</block>
+  <block id="7614dc1d9f60c2a1a41782cd8da64d6a" category="summary">Trident Protect를 사용하면 NetApp SnapMirror 기술의 비동기 복제 기능을 사용하여 동일한 클러스터 또는 서로 다른 클러스터 간에 데이터 및 애플리케이션 변경 사항을 한 스토리지 백엔드에서 다른 스토리지 백엔드로 복제할 수 있습니다.</block>
+  <block id="752b9530af53850991ee625c360b5886" category="doc">NetApp SnapMirror 및 Trident Protect를 사용하여 애플리케이션 복제</block>
+  <block id="e7278dfae13b6c5f2e23e4b66378889e" category="list-text">Trident Protect가 앱 스냅샷을 얼마나 자주 찍을지 선택합니다(여기에는 앱의 Kubernetes 리소스와 각 앱 볼륨에 대한 볼륨 스냅샷이 포함됨)</block>
+  <block id="b89f2db2cb82925801d5b1149de27c17" category="paragraph">Trident Protect를 사용하면 복제된 애플리케이션을 대상 클러스터로 장애 조치할 수 있습니다. 이 절차는 복제 관계를 중지하고 대상 클러스터에서 앱을 온라인으로 전환합니다. Trident Protect는 소스 클러스터에서 앱이 작동 중이면 앱을 중지하지 않습니다.</block>
+  <block id="b65e765544fa343d7e8889398daebb9c" category="paragraph">복제 방향을 반대로 하면 Trident Protect는 원래 소스 스토리지 백엔드로 복제를 계속 진행하면서 애플리케이션을 대상 스토리지 백엔드로 이동합니다. Trident Protect는 소스 애플리케이션을 중지하고 대상 앱으로 장애 조치하기 전에 대상에 데이터를 복제합니다.</block>
+  <block id="61295c8685fb78b94f9c72b204443888" category="paragraph">Trident Protect를 사용하면 다음과 같은 작업 순서를 통해 장애 조치 작업 후에 "장애 복구"를 달성할 수 있습니다. 원래 복제 방향을 복원하기 위한 이 워크플로에서 Trident Protect는 복제 방향을 반전하기 전에 모든 애플리케이션 변경 사항을 원래 소스 애플리케이션으로 복제(재동기화)합니다.</block>
+  <block id="bb74735100fa22a9878799bf2d21623f" category="sidebar">Trident Protect를 통한 고급 데이터 보호</block>
+  <block id="77cc7f8867b1ad1e9856bcd26c8ecff3" category="sidebar">Trident 프로텍트 배치</block>
+  <block id="70568f333da28442c152ac2e1f71e1a0" category="sidebar">Trident Protect로 애플리케이션을 보호하세요</block>
+  <block id="8545a0d7cdafff8da2dece1a851630dc" category="sidebar">Trident Protect 관리</block>
+  <block id="83ff2dd2ff6a9ee85daa1b0fefef4019" category="sidebar">Trident Protect로 실행 후크 관리</block>
 </blocks>
