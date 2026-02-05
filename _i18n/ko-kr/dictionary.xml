@@ -1644,7 +1644,6 @@
   <block id="2294988013d14e5c254422b8164d83ad" category="list-text">괄호 안의 값을 사용자 환경의 정보로 대체하여 지원 번들을 만듭니다. 은<block ref="769627afa23a2b90f925b1091e474dc5" prefix=" " category="inline-code"></block> 번들이 즉시 생성되는지 아니면 생성 시간이 스케줄에 따라 결정되는지, 또는<block ref="2b7dabba0077abe3732e0418b048a56b" prefix=" " category="inline-code"></block> 이 될 수 있는지 결정합니다<block ref="e1ba155a9f2e8c3be94020eef32a0301" prefix=" " category="inline-code"></block>. 기본 설정은<block ref="e1ba155a9f2e8c3be94020eef32a0301" prefix=" " category="inline-code"></block>입니다.</block>
   <block id="506c2c0c7f5b70af3df68c45c46f45a7" category="paragraph">예를 들면 다음과 같습니다.</block>
   <block id="a268a576db3133de464aad1cd81ab3e1" category="inline-link-macro">지원 번들을 생성합니다</block>
-  <block id="76d9687f27080e6c2da9c8a0d64fbd42" category="list-text">Trident Protect CRD를 설치합니다.</block>
   <block id="dfb8cfd789dde682f000a96e0aabb1f1" category="list-text">다음 이미지를 로컬 컴퓨터로 가져와서 태그를 업데이트한 다음 개인 레지스트리에 푸시합니다.</block>
   <block id="e0f6b701766eb28d805d7ba1e820f582" category="list-text">레지스트리에 로그인합니다.</block>
   <block id="814565bb5d7e7359fff967986fd4195a" category="list-text">개인 레지스트리 인증에 사용할 풀 암호를 만듭니다.</block>
@@ -3007,8 +3006,6 @@
   <block id="5866b98c049a53ea6dc7f50f9349f434" category="list-text">데이터 마이그레이션</block>
   <block id="645a84975202e30700b572b49a5ee29d" category="list-text">재해 복구</block>
   <block id="11d5920d0c0b3a97e764f84dc92ef110" category="list-text">애플리케이션 이동성</block>
-  <block id="f593e32b2a3ead4ac029c13126d3531d" category="inline-link-macro">Trident Protect에 대해 자세히 알아보십시오</block>
-  <block id="a4ac350fb585f51020f747525f3175d8" category="paragraph"><block ref="2c7a14b5507108d57a83e6eb9858f03a" category="inline-link-macro-rx"></block>..</block>
   <block id="d28325b08a2b4a8f4af42dc025afe338" category="list-text">Trident가 Kubernetes API 서버와 통신하는 데 사용하는 QPS 값을 설정하기 위해 설치 관리자에 새 플래그가<block ref="060e82a16c6de7d9a8541fb1da32de80" prefix=" " category="inline-code"></block> 추가되었습니다.</block>
   <block id="46b4e7bf1e76e8eeb88747ded42b6d4f" category="list-text">Kubernetes 클러스터 노드에서 스토리지 프로토콜 종속성을 자동으로 관리하기 위한 설치 관리자에 플래그가 추가되었습니다<block ref="1606f6268af560ddbfffdd3790afb4d2" prefix=" " category="inline-code"></block>. Amazon Linux 2023 iSCSI 스토리지 프로토콜과의 호환성 테스트를 거쳐 검증되었습니다</block>
   <block id="ee2cc86dbfffd3b53ed4701a6b458dfb" category="list-text">비원활한 노드 종료 시나리오 중 ONTAP-NAS-Economy 볼륨에 대한 강제 분리 지원 추가</block>
@@ -5088,7 +5085,6 @@
   <block id="98d3ce5c789124fc9207b48d4d1e8fc7" category="paragraph">Trident Protect 24.10은 데이터 보호 작업 중에 KubeVirt VM 파일 시스템의 일관된 상태를 자동으로 보장하지 않습니다. Trident Protect 24.10을 사용하여 KubeVirt VM 데이터를 보호하려면 데이터 보호 작업을 시작하기 전에 파일 시스템의 동결/동결 해제 기능을 수동으로 활성화해야 합니다. 이렇게 하면 파일 시스템이 일관된 상태를 유지하게 됩니다.</block>
   <block id="5ea5c247812e1dca5ff02ca853f05032" category="paragraph">데이터 보호 작업 중 VM 파일 시스템의 동결 및 동결 해제를 관리하도록 Trident Protect 24.10을 구성할 수 있습니다.<block ref="e0dd4c4b8aa16596df6c3f5cb36d3cdc" category="inline-link-macro-rx"></block> 그리고 다음 명령을 사용합니다.</block>
   <block id="d9add54d9d6181f1b39ad4d1bc6451d0" category="paragraph-title">Trident Protect 24.10.1 이상</block>
-  <block id="fc0a8846b51e68aef267b5f9ab2a081d" category="paragraph">Trident Protect 24.10.1부터 Trident Protect는 데이터 보호 작업 중에 KubeVirt 파일 시스템을 자동으로 동결 및 동결 해제합니다. 선택적으로 다음 명령을 사용하여 이 자동 동작을 비활성화할 수 있습니다.</block>
   <block id="d65eac563b898cb7e41b8853a4fe1a3c" category="paragraph">Helm을 사용하여 소스 애플리케이션을 설치한 경우<block ref="cc1f5c1d16e33b8463c9ee27295cd5df" prefix=" " category="inline-code"></block> 깃발에는 특별한 대우가 주어집니다.<block ref="b068931cc450442b63f5b3d276ea4297" prefix=" " category="inline-code"></block> 라벨 키. 복구 또는 장애 조치 프로세스 중에 Trident Protect는 이 레이블을 대상 네임스페이스에 복사하지만 소스의 값이 소스 네임스페이스와 일치하는 경우 값을 대상 네임스페이스 값으로 업데이트합니다. 이 값이 소스 네임스페이스와 일치하지 않으면 변경 사항 없이 대상 네임스페이스에 복사됩니다.</block>
   <block id="186ed0696d9f28961b696fce39a1ab04" category="summary">Trident Protect를 사용하면 Trident 사용하여 애플리케이션과 애플리케이션 데이터를 보호할 수 있습니다.</block>
   <block id="a1fc1c89153021eb03a34941e90a9ac8" category="doc">Trident Protect에 대해 알아보세요</block>
@@ -5125,7 +5121,6 @@
   <block id="e0efc186d85cb700edf5d19dd5bc9496" category="open-title">NetApp 에서 Trident Protect 설치</block>
   <block id="93459820f19a8251d29e060f09ece7bf" category="list-text">다음 명령 중 하나를 사용하여 Helm을 사용하여 Trident Protect를 설치합니다. 바꾸다<block ref="b90b2ffedb63ca3bd8795caf4397715e" prefix=" " category="inline-code"></block> 클러스터에 할당되고 클러스터의 백업과 스냅샷을 식별하는 데 사용되는 클러스터 이름이 포함됩니다.</block>
   <block id="eb462dda0e96614f18b56ebeffd4f4c3" category="list-text">Trident Protect를 정상적으로 설치하세요:</block>
-  <block id="62d9a4720463384e2dba920f37795e8b" category="list-text">Trident Protect를 설치하고 예약된 일일 Trident Protect AutoSupport 지원 번들 업로드를 비활성화하세요.</block>
   <block id="272a3e0fc5f097dfcb8f549a6577a5f6" category="open-title">개인 레지스트리에서 Trident Protect 설치</block>
   <block id="357de3657314f9b2b3abd151f9d483ee" category="paragraph">Kubernetes 클러스터가 인터넷에 액세스할 수 없는 경우 개인 이미지 레지스트리에서 Trident Protect를 설치할 수 있습니다. 다음 예에서 괄호 안의 값을 사용자 환경의 정보로 바꾸세요.</block>
   <block id="8bb72cea6536be6ef0764dfc1d24b096" category="list-text">Trident Protect 시스템 네임스페이스를 만듭니다.</block>
@@ -5200,4 +5195,7 @@
   <block id="70568f333da28442c152ac2e1f71e1a0" category="sidebar">Trident Protect로 애플리케이션을 보호하세요</block>
   <block id="8545a0d7cdafff8da2dece1a851630dc" category="sidebar">Trident Protect 관리</block>
   <block id="83ff2dd2ff6a9ee85daa1b0fefef4019" category="sidebar">Trident Protect로 실행 후크 관리</block>
+  <block id="a099f4b5b32bb2a3c98bf39fd2eada0d" category="paragraph">Trident Protect 24.10.1부터 Trident Protect는 데이터 보호 작업 중에 KubeVirt 파일 시스템을 자동으로 동결 및 해제합니다. 필요에 따라 다음 명령을 사용하여 이 자동 동작을 비활성화할 수 있습니다:</block>
+  <block id="f2492ecd5d283ce85dae0f4a9ee08a0a" category="inline-link-macro">Trident Protect에 대해 자세히 알아보세요</block>
+  <block id="fcea491f131646a6f887b5a13212cd84" category="paragraph"><block ref="30e9c40051e05c72dc744ea1f1015e1f" category="inline-link-macro-rx"></block>.</block>
 </blocks>

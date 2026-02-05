@@ -34,7 +34,7 @@ NOTE: 기본적으로 Trident Protect는 클러스터 및 관리형 애플리케
 ----
 helm repo add netapp-trident-protect https://netapp.github.io/trident-protect-helm-chart
 ----
-. Trident Protect CRD를 설치합니다.
+. Trident Protect CRD를 설치하세요:
 +
 [source, console]
 ----
