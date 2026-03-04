@@ -150,20 +150,20 @@ storage:
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-name: netapp-san-us-east1
+  name: netapp-san-us-east1
 provisioner: csi.trident.netapp.io
 volumeBindingMode: WaitForFirstConsumer
 allowedTopologies:
-- matchLabelExpressions:
-- key: topology.kubernetes.io/zone
-  values:
-  - us-east1-a
-  - us-east1-b
-- key: topology.kubernetes.io/region
-  values:
-  - us-east1
+  - matchLabelExpressions:
+    - key: topology.kubernetes.io/zone
+      values:
+        - us-east1-a
+        - us-east1-b
+    - key: topology.kubernetes.io/region
+      values:
+        - us-east1
 parameters:
-  fsType: "ext4"
+  fsType: ext4
 ----
 위에 제공된 StorageClass 정의에서 `volumeBindingMode` 는 로 `WaitForFirstConsumer`설정됩니다. 이 StorageClass에 요청된 PVC는 POD에서 참조될 때까지 작동하지 않습니다. 및 는 `allowedTopologies` 사용할 영역 및 영역을 제공합니다.  `netapp-san-us-east1`StorageClass는 위에 정의된 백엔드에 PVC를 `san-backend-us-east1` 생성합니다.
 
