@@ -23,9 +23,9 @@ indexpage:
   - title: Trident를 구축합니다
     links:
     - title: Trident 연산자를 사용하여 배포합니다
-      url: "/trident-get-started/kubernetes-deploy-operator.html"
+      url: "/trident-install/kubernetes-deploy-operator.html"
     - title: tridentctl을 사용하여 배포합니다
-      url: "/trident-get-started/kubernetes-deploy-tridentctl.html"
+      url: "/trident-install/kubernetes-deploy-tridentctl.html"
     - title: Docker용 Trident를 구축하십시오
       url: "/trident-docker/deploy-docker.html"
   - title: Trident를 업그레이드합니다
@@ -59,7 +59,7 @@ indexpage:
   - title: 블로그 및 커뮤니티
     links:
     - title: 쿠버네티스 허브
-      url: https://cloud.netapp.com/kubernetes-hub
+      url: https://www.netapp.com/console/
     - title: NetApp.IO를 참조하십시오
       url: https://netapp.io/
     - title: 불화
