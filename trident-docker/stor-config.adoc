@@ -289,7 +289,7 @@ NOTE: Swarm은 여러 노드 간의 볼륨 생성을 오케스트레이션하지
 * FlexGroup 볼륨에는 클론 복제가 지원되지 않습니다.
 
 
-FlexGroups에 적합한 FlexGroups 및 워크로드에 대한 자세한 내용은 를 참조하십시오 https://www.netapp.com/pdf.html?item=/media/12385-tr4571pdf.pdf["NetApp FlexGroup 볼륨 모범 사례 및 구축 가이드 를 참조하십시오"^].
+FlexGroups 및 FlexGroups에 적합한 워크로드에 대한 자세한 내용은  https://www.netapp.com/pdf.html?item=/media/12385-tr4571.pdf["NetApp FlexGroup 볼륨 모범 사례 및 구축 가이드 를 참조하십시오"^]을 참조하십시오.
 
 동일한 환경에서 고급 기능과 대규모 확장성을 활용하려면 Docker Volume Plugin의 여러 인스턴스를 를 사용하고 을 사용하여 `ontap-nas-economy` 인스턴스를 하나씩 실행할 수 `ontap-nas` 있습니다.
 
