@@ -16,6 +16,7 @@ Google Cloud NetApp 볼륨에 대한 NFS 백엔드 구성 옵션에 대해 알�
 
 
 
+[[backend-configuration-options]]
 == 백엔드 구성 옵션
 
 각 백엔드는 단일 Google Cloud 지역에 볼륨을 프로비저닝합니다. 다른 영역에 볼륨을 생성하려면 추가 백엔드를 정의할 수 있습니다.
@@ -68,6 +69,7 @@ Google Cloud NetApp 볼륨에 대한 NFS 백엔드 구성 옵션에 대해 알�
 |===
 
 
+[[volume-provisioning-options]]
 == 볼륨 프로비저닝 옵션
 
 구성 파일의 섹션에서 기본 볼륨 프로비저닝을 제어할 수 `defaults` 있습니다.
@@ -90,6 +92,7 @@ Google Cloud NetApp 볼륨에 대한 NFS 백엔드 구성 옵션에 대해 알�
 |===
 
 
+[[example-configurations]]
 == 예제 설정
 
 다음 예에서는 대부분의 매개 변수를 기본값으로 두는 기본 구성을 보여 줍니다. 이는 백엔드를 정의하는 가장 쉬운 방법입니다.
@@ -373,6 +376,7 @@ supportedTopologies:
 ====
 
 
+[[whats-next]]
 == 다음 단계
 
 백엔드 구성 파일을 생성한 후 다음 명령을 실행합니다.
@@ -400,10 +404,12 @@ tridentctl logs
 
 
 
+[[more-examples]]
 == 추가 예제
 
 
 
+[[storage-class-definition-examples]]
 === 스토리지 클래스 정의 예
 
 다음은 위의 백엔드를 참조하는 기본 `StorageClass` 정의입니다.
@@ -457,6 +463,7 @@ parameters:
 
 
 
+[[pvc-definition-example]]
 === PVC 정의 예
 
 [listing]

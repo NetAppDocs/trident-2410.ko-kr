@@ -12,10 +12,11 @@ summary: 운영자를 사용하여 기존 Trident 설치를 쉽게 업그레이�
 
 
 [role="lead"]
-Trident 연산자를 사용하여 수동으로 또는 Helm을 사용하여 Trident를 업그레이드할 수 있습니다. Trident 운영자 설치에서 다른 Trident 운영자 설치로 업그레이드하거나, 설치에서 Trident 운영자 버전으로 업그레이드할 수 `tridentctl` 있습니다. link:upgrade-trident.html#select-an-upgrade-method["업그레이드 방법을 선택합니다"]Trident 운영자 설치를 업그레이드하기 전에 검토하십시오.
+Trident 운영자를 사용하여 수동으로 또는 Helm을 통해 Trident를 업그레이드할 수 있습니다. Trident 운영자 설치에서 다른 Trident 운영자 설치로 업그레이드하거나  `tridentctl` 설치에서 Trident 운영자 버전으로 업그레이드할 수 있습니다. Trident 운영자 설치를 업그레이드하기 전에 link:upgrade-trident.html#step-3-select-an-upgrade-method["업그레이드 방법을 선택합니다"]를 검토하십시오.
 
 
 
+[[upgrade-a-manual-installation]]
 == 수동 설치를 업그레이드합니다
 
 클러스터 범위 Trident 운영자 설치에서 다른 클러스터 범위 Trident 운영자 설치로 업그레이드할 수 있습니다. 모든 Trident 버전 21.01 이상은 클러스터 범위 연산자를 사용합니다.
@@ -57,6 +58,7 @@ kubectl create -f 24.10.0/trident-installer/deploy/<bundle.yaml> -n trident
 
 
 
+[[upgrade-a-helm-installation]]
 == Helm 설치를 업그레이드합니다
 
 Trident Helm 설치를 업그레이드할 수 있습니다.
@@ -102,6 +104,7 @@ NOTE: 초기 설치 중에 사용자 지정 옵션을 설정하는 경우(예: T
 
 
 
+[[upgrade-from-a-tridentctl-installation-to-trident-operator]]
 == 설치에서 Trident 운영자로 업그레이드합니다 `tridentctl`
 
 설치 시 Trident 운영자의 최신 릴리즈로 업그레이드할 수 `tridentctl` 있습니다. 기존 백엔드 및 PVC를 자동으로 사용할 수 있습니다.

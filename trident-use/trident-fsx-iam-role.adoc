@@ -19,6 +19,7 @@ NOTE: AWS IAM 역할을 사용하여 인증하려면 EKS를 사용하여 Kuberne
 
 
 
+[[create-aws-secret-manager-secret]]
 == AWS Secret Manager 암호를 생성합니다
 
 이 예에서는 Trident CSI 자격 증명을 저장하기 위한 AWS Secret Manager 암호를 생성합니다.
@@ -30,6 +31,7 @@ aws secretsmanager create-secret --name trident-secret --description "Trident CS
 ----
 
 
+[[create-iam-policy]]
 == IAM 정책을 생성합니다
 
 다음 예에서는 AWS CLI를 사용하여 IAM 정책을 생성합니다.
@@ -72,6 +74,7 @@ policy.json:
 ----
 
 
+[[create-an-iam-role-for-the-service-account]]
 === 서비스 계정에 대한 IAM 역할을 생성합니다
 
 [role="tabbed-block"]

@@ -21,6 +21,7 @@ NOTE: 기본적으로 Trident Protect는 클러스터 및 관리형 애플리케
 
 
 
+[[install-trident-protect]]
 == Trident Protect 설치
 
 [role="tabbed-block"]
@@ -171,6 +172,7 @@ helm install trident-protect netapp-trident-protect/trident-protect --set autoSu
 ====
 
 
+[[specify-trident-protect-container-resource-limits]]
 == Trident Protect 컨테이너 리소스 제한 지정
 
 Trident Protect를 설치한 후에는 구성 파일을 사용하여 Trident Protect 컨테이너에 대한 리소스 제한을 지정할 수 있습니다. 리소스 제한을 설정하면 Trident Protect 작업에서 클러스터 리소스가 얼마나 소모되는지 제어할 수 있습니다.
